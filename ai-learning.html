@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Жасанды интеллект негізінде жобалық оқытуды ұйымдастыру</title>
+    <style>
+        /* Негізгі стильдер */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --accent-color: #27ae60;
+            --text-color: #333;
+            --light-color: #f5f5f5;
+            --bg-color: #ffffff;
+            --border-color: #e0e0e0;
+            --heading-color: #2c3e50;
+            --font-size-base: 16px;
+        }
+
+        /* Контраст режимі */
+        body.contrast-mode {
+            --primary-color: #FFD700;
+            --secondary-color: #FFC107;
+            --accent-color: #FFD700;
+            --text-color: #FFFFFF;
+            --light-color: #333;
+            --bg-color: #000000;
+            --border-color: #FFD700;
+            --heading-color: #FFD700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            font-size: var(--font-size-base);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header стилі */
+        /* CSS кодтағы accessibility-panel және accessibility-tools стильдері */
+
+        .accessibility-panel {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--light-color);
+    border-radius: 0 6px 6px 0;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+    padding: 6px;  /* Кішірейтілген padding */
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--border-color);
+    width: auto;  /* Контент өлшеміне сәйкес ені */
+    min-width: 32px;  /* Минималды ені */
+}
+
+.contrast-mode .accessibility-panel {
+    background-color: var(--bg-color);
+    border-right: 1px solid var(--heading-color);
+}
+
+.accessibility-tools {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.accessibility-tools button {
+    background: none;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 8px;
+    cursor: pointer;
+    color: var(--text-color);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.accessibility-tools button:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+#contrast-toggle {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+}
+
+.contrast-mode #contrast-toggle {
+    background-color: var(--heading-color);
+    color: var(--bg-color);
+}
+
+/* Мобильді құрылғылар үшін медиа сұраныстар */
+@media screen and (max-width: 768px) {
+    .accessibility-panel {
+        top: auto;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        flex-direction: row;
+        border-radius: 8px;
+        padding: 8px;
+    }
+    
+    .accessibility-tools {
+        flex-direction: row;
+    }
+}
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            color: #4a86e8;
+        }
+
+        header {
+            background-color: var(--bg-color);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .contrast-mode .logo {
+            color: var(--heading-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            background-color: #4a86e8;
+            color: white;
+        }
+
+        .accessibility-tools {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+
+        .accessibility-tools button {
+            background: none;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            margin-left: 8px;
+            padding: 5px 10px;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+
+        .accessibility-tools button:hover {
+            background-color: var(--light-color);
+        }
+
+        #contrast-toggle {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+        }
+
+        .contrast-mode #contrast-toggle {
+            background-color: var(--heading-color);
+            color: var(--bg-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 120px 0 60px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .contrast-mode .hero {
+            background: var(--bg-color);
+            border-bottom: 3px solid var(--heading-color);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+        }
+
+        .contrast-mode .btn {
+            background-color: var(--bg-color);
+            color: var(--heading-color);
+            border: 2px solid var(--heading-color);
+        }
+
+        .contrast-mode .btn-outline {
+            background-color: var(--bg-color);
+            color: var(--heading-color);
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* Ақпараттық бөлімдер */
+        .section {
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--heading-color);
+            font-size: 2rem;
+        }
+
+        .contrast-mode .section-title {
+            color: var(--heading-color);
+        }
+
+        /* Неліктен жасанды интеллект бөлімі */
+        .benefits-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .benefit-card {
+            flex: 1 1 250px;
+            max-width: 300px;
+            padding: 25px;
+            border-radius: 8px;
+            background-color: var(--light-color);
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contrast-mode .benefit-card {
+            background-color: var(--bg-color);
+            border: 1px solid var(--heading-color);
+            box-shadow: none;
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .contrast-mode .benefit-icon {
+            color: var(--heading-color);
+        }
+
+        .benefit-card h3 {
+            margin-bottom: 15px;
+            color: var(--heading-color);
+        }
+
+        .contrast-mode .benefit-card h3 {
+            color: var(--heading-color);
+        }
+
+        /* AI құралдарын қолдану бөлімі */
+        .steps-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .step {
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .step-header {
+            padding: 15px 20px;
+            background-color: var(--light-color);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contrast-mode .step-header {
+            background-color: var(--bg-color);
+            border-bottom: 1px solid var(--heading-color);
+            color: var(--text-color);
+        }
+
+        .step-content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .step.active .step-content {
+            padding: 20px;
+            max-height: 300px;
+        }
+
+        /* Мысал жобалар галереясы */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            height: 200px;
+        }
+
+        .contrast-mode .gallery-item {
+            border: 1px solid var(--heading-color);
+            box-shadow: none;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .contrast-mode .gallery-item-overlay {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            border-top: 1px solid var(--heading-color);
+        }
+
+        .gallery-item:hover .gallery-item-overlay {
+            transform: translateY(0);
+        }
+
+        /* Жүктеу материалдары */
+        .downloads-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .download-card {
+            flex: 1 1 300px;
+            max-width: 350px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .contrast-mode .download-card {
+            border: 1px solid var(--heading-color);
+        }
+
+        .download-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .contrast-mode .download-icon {
+            color: var(--heading-color);
+        }
+
+        .download-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 15px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .contrast-mode .download-button {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            border: 1px solid var(--heading-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--light-color);
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .contrast-mode footer {
+            background-color: var(--bg-color);
+            border-top: 1px solid var(--heading-color);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .footer-column {
+            flex: 1 1 250px;
+            margin-bottom: 20px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 15px;
+            color: var(--heading-color);
+        }
+
+        .contrast-mode .footer-column h3 {
+            color: var(--heading-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+
+        .footer-links a {
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .contrast-mode .footer-links a:hover {
+            color: var(--heading-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .contrast-mode .copyright {
+            border-top: 1px solid var(--heading-color);
+        }
+
+        /* Tooltip стильдері */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+        }
+
+        .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: var(--heading-color);
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .contrast-mode .tooltip-text {
+            background-color: var(--heading-color);
+            color: var(--bg-color);
+            border: 1px solid var(--heading-color);
+        }
+
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Адаптивтілік */
+        @media screen and (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero {
+                padding: 140px 0 40px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .accessibility-tools {
+                margin: 15px 0 0;
+                justify-content: center;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .benefit-card {
+                flex: 1 1 100%;
+            }
+            
+            .download-card {
+                flex: 1 1 100%;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.7rem;
+            }
+        }
+
+        /* Анимациялар */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        /* Контраст режимінде сілтеме атауларын аққа бояу */
+/* Негізгі навигация сілтемелері үшін */
+.contrast-mode nav ul li a {
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+/* Белсенді сілтеме үшін (active класы бар) */
+.contrast-mode nav ul li a.active {
+    color: #FFFFFF;
+    background-color: var(--heading-color); /* Қосымша көрнекі бөлу үшін */
+}
+
+/* Сілтемеге меңзегенде (hover) */
+.contrast-mode nav ul li a:hover {
+    background-color: var(--heading-color);
+    color: #FFFFFF;
+}
+    </style>
+</head>
+<body>
+    <div class="accessibility-panel">
+        <div class="accessibility-tools">
+            <button id="font-decrease" title="Қаріпті кішірейту">A-</button>
+            <button id="font-increase" title="Қаріпті үлкейту">A+</button>
+            <button id="contrast-toggle" title="Контраст режимі">◐</button>
+        </div>
+    </div>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="logo.png" alt="Логотип">
+                <h1>ЖобаMake</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Басты бет</a></li>
+                    <li><a href="learning.html">Оқу материалдары</a></li>
+                    <li><a href="projects.html">Жобалар</a></li>
+                    <li><a href="teachers.html">Мұғалімдерге</a></li>
+                    <li><a href="parents.html">Ата-аналарға</a></li>
+                    <li><a href="ai-learning.html">AI арқылы оқыту</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Жасанды интеллект негізінде жобалық оқытуды ұйымдастыру</h1>
+            <p>Жобалық оқытуды дараландыруға, креативтілікті арттыруға және инклюзивті қолдау көрсетуге арналған заманауи шешімдер.</p>
+            <div class="hero-buttons">
+                <a href="#why-ai" class="btn">AI құралдары туралы</a>
+                <a href="#examples" class="btn btn-outline">Мысал жобалар</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Неліктен жасанды интеллект қажет? -->
+    <section id="why-ai" class="section">
+        <div class="container">
+            <h2 class="section-title">Неліктен жасанды интеллект қажет?</h2>
+            <div class="benefits-container">
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">🎯</div>
+                    <h3>Даралап оқыту</h3>
+                    <p>Әр оқушының жеке қабілеттеріне сәйкес материалдарды бейімдеу және оқыту қарқынын реттеу.</p>
+                    <div class="tooltip">ℹ️
+                        <span class="tooltip-text">AI құралдары әр оқушының жеке мүмкіндіктеріне бейімделген тапсырмалар жасауға көмектеседі</span>
+                    </div>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">🔍</div>
+                    <h3>Оқушы қызығушылығына бейімделу</h3>
+                    <p>Оқушылардың қызығушылықтарын ескере отырып, жобалық тапсырмаларды қызықты әрі тартымды ету.</p>
+                    <div class="tooltip">ℹ️
+                        <span class="tooltip-text">AI оқушылардың қызығушылықтарын талдап, соған сәйкес материалдар ұсынады</span>
+                    </div>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">⏱️</div>
+                    <h3>Уақыт үнемдеу</h3>
+                    <p>Мұғалімдер мен оқушылар үшін рутиналық жұмыстарды автоматтандырып, шығармашылыққа көбірек уақыт бөлу.</p>
+                    <div class="tooltip">ℹ️
+                        <span class="tooltip-text">Жауаптарды тексеру, кері байланыс беру сияқты жұмыстарды AI автоматтандыра алады</span>
+                    </div>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">💡</div>
+                    <h3>Шығармашылықты қолдау</h3>
+                    <p>Жаңа идеялар мен шешімдерді табуға көмектесіп, шығармашылық ойлауды дамыту.</p>
+                    <div class="tooltip">ℹ️
+                        <span class="tooltip-text">AI креативті идеялар ұсынып, шығармашылық процесті жеңілдетеді</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI құралдарын қалай қолдануға болады? -->
+    <section id="how-to-use" class="section">
+        <div class="container">
+            <h2 class="section-title">AI құралдарын қалай қолдануға болады?</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-header">
+                        <h3>Идея генерациясы</h3>
+                        <span class="step-toggle">+</span>
+                    </div>
+                    <div class="step-content">
+                        <p>Жасанды интеллект жоба тақырыптарын ұсынып, мәселелерді анықтауға көмектесе алады. Оқушылар қызығушылықтарына сәйкес идеяларды генерациялап, оларды талқылап, ең тиімдісін таңдай алады.</p>
+                        <p>Мысалы: ChatGPT, Claude немесе Bard сияқты құралдар оқушыларға жоба тақырыптарын ұсынып, оларды нақтылауға көмектеседі.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-header">
+                        <h3>Жоспар құру</h3>
+                        <span class="step-toggle">+</span>
+                    </div>
+                    <div class="step-content">
+                        <p>Жобаның құрылымын, кезеңдерін және мерзімдерін анықтауға AI көмектеседі. Бұл оқушыларға жобаны жүйелі түрде жүзеге асыруға мүмкіндік береді.</p>
+                        <p>Мысалы: AI көмегімен Gantt диаграммалары, жоба кезеңдері, міндеттерді бөлу сияқты жоспар элементтерін жасауға болады.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-header">
+                        <h3>Ақпарат өңдеу</h3>
+                        <span class="step-toggle">+</span>
+                    </div>
+                    <div class="step-content">
+                        <p>Жасанды интеллект көмегімен үлкен көлемдегі мәліметтерді талдау, мәтіндерді қысқарту, аудармалар жасау сияқты жұмыстарды жеңілдетуге болады.</p>
+                        <p>Мысалы: Bing AI, Anthropic Claude немесе Gemini сияқты құралдар ақпаратты талдап, қорытындылауға көмектеседі.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-header">
+                        <h3>Визуал материал жасау</h3>
+                        <span class="step-toggle">+</span>
+                    </div>
+                    <div class="step-content">
+                        <p>Жоба презентациялары, инфографикалар, иллюстрациялар сияқты визуалды материалдарды жасауда AI құралдары көмектеседі.</p>
+                        <p>Мысалы: DALL-E, Midjourney немесе Canva AI көмегімен жобаға қажетті суреттер, диаграммалар жасауға болады.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-header">
+                        <h3>Рефлексия</h3>
+                        <span class="step-toggle">+</span>
+                    </div>
+                    <div class="step-content">
+                        <p>AI көмегімен жоба нәтижелерін талдап, оқушылардың жұмысына кері байланыс беруге болады. Бұл оқушыларға өз жетістіктері мен кемшіліктерін жақсы түсінуге көмектеседі.</p>
+                        <p>Мысалы: AI құралдары жоба бойынша кері байланыс беріп, жақсарту жолдарын ұсына алады.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Қауіпсіздік және этика -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Қауіпсіздік және этика</h2>
+            <div class="benefits-container">
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">🔒</div>
+                    <h3>Оқушы деректерін қорғау</h3>
+                    <p>Жеке ақпараттың қауіпсіздігін қамтамасыз ету және құпиялылықты сақтау принциптері.</p>
+                    <div class="tooltip">ℹ️
+                        <span class="tooltip-text">AI құралдарын қолданғанда оқушылардың жеке ақпараттарын қорғау маңызды</span>
+                    </div>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">✍️</div>
+                    <h3>Шынайы авторлықты түсіндіру</h3>
+                    <p>AI көмегімен жасалған материалдарды пайдалану этикасы және авторлық туралы түсінік.</p>
+                    <div class="tooltip">ℹ️
+                        <span class="tooltip-text">Оқушылар AI көмегімен жасалған мазмұнды қалай дұрыс пайдалану керектігін білуі тиіс</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Мысал жобалар галереясы -->
+    <section id="examples" class="section">
+        <div class="container">
+            <h2 class="section-title">Мысал жобалар</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="https://bilimdinews.kz/wp-content/uploads/2022/05/фото-06.jpg" alt="Экологиялық жоба">
+                    <div class="gallery-item-overlay">
+                        <h3>Экологиялық мәселелер</h3>
+                        <p>Жергілікті экологиялық мәселелерді зерттеу және шешу жолдарын ұсыну.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.gov.kz/uploads/2024/6/26/9d1917b1f477d1318c1b226eced87f48_original.210387.jpeg" alt="Әлеуметтік жоба">
+                    <div class="gallery-item-overlay">
+                        <h3>Әлеуметтік жоба</h3>
+                        <p>Қоғамдық мәселелерді шешуге бағытталған жоба жұмысы.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://egemen.kz/media/2020/06/08/innivation_idea.jpg" alt="Технологиялық жоба">
+                    <div class="gallery-item-overlay">
+                        <h3>Технологиялық инновация</h3>
+                        <p>Жаңа технологиялық шешімдер ұсыну және прототип жасау.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://egemen.kz/media/2019/10/21/1514514789_article_b_1500_.jpeg" alt="Мәдени жоба">
+                    <div class="gallery-item-overlay">
+                        <h3>Мәдени мұра</h3>
+                        <p>Мәдени құндылықтарды зерттеу және сақтау жолдарын ұсыну.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://festivalnauki.ru/upload/iblock/439/yzxjb8l3bwszngjuwzy6kko6wk2g27t9/Algoritm-dlya-detey.png" alt="Алгоритм құрастыру">
+                    <div class="gallery-item-overlay">
+                        <h3>Алгоритм әлемі</h3>
+                        <p>Күнделікті өмірден мысал келтіре отырып, алгоритм құрастыру және визуалды түрде көрсету.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://egemen.kz/media/2023/05/26/ea76a3fe-dd69-4f8c-99ac-73e0fdfad89c.jpeg?width=1300&height=700" alt="Цифрлық қауіпсіздік">
+                    <div class="gallery-item-overlay">
+                        <h3>Цифрлық қауіпсіздік</h3>
+                        <p>Интернеттегі қауіпсіздік ережелерін зерттеу және инфографика жасау арқылы түсіндіру.</p>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </section>
+
+    <!-- Жүктеу материалдары -->
+    <section id="downloads" class="section">
+        <div class="container">
+            <h2 class="section-title">Жүктеу материалдары</h2>
+            <div class="downloads-container">
+                <div class="download-card">
+                    <div class="download-icon">📄</div>
+                    <h3>AI көмегімен жоба құру</h3>
+                    <p>Жасанды интеллект құралдарын қолданып жобалық жұмысты ұйымдастыру бойынша толық нұсқаулық.</p>
+                    <a href="#" class="download-button">PDF жүктеу</a>
+                </div>
+                <div class="download-card">
+                    <div class="download-icon">📝</div>
+                    <h3>Үлгі тапсырмалар</h3>
+                    <p>Әр түрлі пәндер бойынша AI көмегімен орындалатын жобалық тапсырмалар жинағы.</p>
+                    <a href="#" class="download-button">PDF жүктеу</a>
+                </div>
+                <div class="download-card">
+                    <div class="download-icon">👩‍🏫</div>
+                    <h3>Мұғалімге арналған ережелер</h3>
+                    <p>Жасанды интеллект құралдарын сабақта қолдану ережелерімен танысыңыз.</p>
+                    <a href="#" class="download-button">PDF жүктеу</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Навигация</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Басты бет</a></li>
+                        <li><a href="learning.html">Оқу материалдары</a></li>
+                        <li><a href="projects.html">Жобалар</a></li>
+                        <li><a href="teachers.html">Мұғалімдерге</a></li>
+                        <li><a href="parents.html">Ата-аналарға</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Қосымша ресурстар</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">AI құралдары тізімі</a></li>
+                        <li><a href="#">Вебинарлар</a></li>
+                        <li><a href="#">Жиі қойылатын сұрақтар</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Байланыс</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Email: info@ai-project.kz</a></li>
+                        <li><a href="#">Телефон: +7 (xxx) xxx-xx-xx</a></li>
+                        <li><a href="#">Мекенжай: Қазақстан, Астана</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 AI Жобалық Оқыту. Барлық құқықтар қорғалған.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Контраст режимін ауыстыру
+        document.getElementById('contrast-toggle').addEventListener('click', function() {
+            document.body.classList.toggle('contrast-mode');
+        });
+
+        // Қаріп өлшемін өзгерту
+        let fontSize = parseInt(getComputedStyle(document.body).fontSize);
+        
+        document.getElementById('font-increase').addEventListener('click', function() {
+            if (fontSize < 24) {
+                fontSize += 2;
+                document.body.style.fontSize = fontSize + 'px';
+            }
+        });
+
+        document.getElementById('font-decrease').addEventListener('click', function() {
+            if (fontSize > 12) {
+                fontSize -= 2;
+                document.body.style.fontSize = fontSize + 'px';
+            }
+        });
+
+        // Accordion функциясы
+        const steps = document.querySelectorAll('.step');
+        
+        steps.forEach(step => {
+            const header = step.querySelector('.step-header');
+            const content = step.querySelector('.step-content');
+            const toggle = step.querySelector('.step-toggle');
+            
+            header.addEventListener('click', () => {
+                step.classList.toggle('active');
+                
+                if (step.classList.contains('active')) {
+                    toggle.textContent = '-';
+                } else {
+                    toggle.textContent = '+';
+                }
+            });
+        });
+
+        // Анимация эффекттері
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                    }
+                });
+            });
+            
+            fadeElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transition = 'opacity 0.5s ease-in';
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>

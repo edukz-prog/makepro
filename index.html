@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инклюзивті Жоба - Әр бала үшін жобалық оқыту</title>
+    <style>
+        /* Жалпы стильдер */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Хедер стильдері */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            color: #4a86e8;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            background-color: #4a86e8;
+            color: white;
+        }
+        
+        .search-login {
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-box {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            margin-right: 15px;
+            width: 200px;
+        }
+        
+        /* Баннер стильдері */
+        .hero {
+            background-image: url('1.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 0;
+            position: relative;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: #4a86e8;
+            color: white;
+            border: 2px solid #4a86e8;
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #3a76d8;
+            border-color: #3a76d8;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Миссия секциясы */
+        .mission {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: #333;
+        }
+        
+        .mission-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .mission-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 30px;
+        }
+        
+        .mission-text p {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .mission-infographic {
+            flex: 1;
+            min-width: 300px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .infographic-item {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .infographic-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .infographic-item i {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: #4a86e8;
+        }
+        
+        .infographic-item h3 {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        
+        /* Негізгі бөлімдер */
+        .features {
+            padding: 60px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+        
+        .feature-card:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 50px;
+            padding: 30px 0;
+            text-align: center;
+            background-color: #f0f7ff;
+            color: #4a86e8;
+        }
+        
+        .feature-content {
+            padding: 20px;
+        }
+        
+        .feature-content h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        .feature-content p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .read-more {
+            color: #4a86e8;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            padding: 5px 0;
+            transition: all 0.3s;
+        }
+        
+        .read-more:hover {
+            color: #3a76d8;
+            transform: translateX(5px);
+        }
+        
+        /* Жаңалықтар секциясы */
+        .news {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .news-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+        
+        .news-card:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .news-image {
+            height: 200px;
+            background-color: #eee;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s;
+        }
+        
+        .news-card:hover .news-image img {
+            transform: scale(1.05);
+        }
+        
+        .news-date {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #4a86e8;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        
+        .news-content {
+            padding: 20px;
+        }
+        
+        .news-content h3 {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        
+        .news-content p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .view-all-btn {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        /* Пікірлер секциясы */
+        .testimonials {
+            padding: 60px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .testimonials-slider {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        
+        .testimonial-slide {
+            display: none;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .testimonial-slide.active {
+            display: block;
+            animation: fadeIn 0.8s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .testimonial-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .testimonial-quote {
+            font-size: 18px;
+            font-style: italic;
+            color: #555;
+            margin-bottom: 20px;
+            position: relative;
+            padding: 0 30px;
+        }
+        
+        .testimonial-quote::before,
+        .testimonial-quote::after {
+            content: '"';
+            font-size: 50px;
+            color: #ddd;
+            position: absolute;
+            font-family: serif;
+        }
+        
+        .testimonial-quote::before {
+            top: -20px;
+            left: 0;
+        }
+        
+        .testimonial-quote::after {
+            bottom: -40px;
+            right: 0;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .testimonial-role {
+            color: #4a86e8;
+            font-size: 14px;
+        }
+        
+        .slider-dots {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: #ddd;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .dot.active {
+            background-color: #4a86e8;
+            transform: scale(1.3);
+        }
+        
+        /* Қолжетімділік панелі */
+        .accessibility-panel {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: white;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            z-index: 999;
+        }
+        
+        .accessibility-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .accessibility-btn {
+            background-color: #f8f9fa;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .accessibility-btn:hover {
+            background-color: #e9ecef;
+        }
+        
+        /* Футер стильдері */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+            padding-right: 20px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #4a86e8;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #4a86e8;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: #4a86e8;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #999;
+            font-size: 14px;
+        }
+        
+        
+        /* Респонсив стильдер */
+        @media screen and (max-width: 992px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .search-login {
+                width: 100%;
+                justify-content: center;
+                margin-top: 15px;
+            }
+            
+            .mission-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .mission-text {
+                padding-right: 0;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .hero h2 {
+                font-size: 32px;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .footer-column {
+                min-width: 100%;
+            }
+        }
+        
+        /* Үлкейтілген мәтін үшін класстар */
+        .text-large {
+            font-size: 1.2em !important;
+        }
+        
+        /* Enhanced High Contrast Styles */
+        .high-contrast {
+            background-color: black !important;
+            color: white !important;
+        }
+        
+        /* Override all sections to black background in high contrast mode */
+        .high-contrast body,
+        .high-contrast header,
+        .high-contrast .hero,
+        .high-contrast .mission,
+        .high-contrast .features,
+        .high-contrast .news,
+        .high-contrast .testimonials,
+        .high-contrast footer,
+        .high-contrast .feature-card,
+        .high-contrast .news-card,
+        .high-contrast .accessibility-panel,
+        .high-contrast .infographic-item,
+        .high-contrast .testimonial-slide {
+            background-color: black !important;
+            color: white !important;
+            border-color: white !important;
+        }
+        
+        /* Ensure elements with gray backgrounds turn black */
+        .high-contrast .feature-card .feature-icon,
+        .high-contrast .news-card,
+        .high-contrast .infographic-item,
+        .high-contrast .accessibility-btn {
+            background-color: black !important;
+            color: white !important;
+            border: 1px solid white !important;
+        }
+        
+        .high-contrast .hero::before {
+            background-color: rgba(0, 0, 0, 0.7) !important;
+        }
+        
+        /* For better readability of text */
+        .high-contrast p, 
+        .high-contrast li {
+            color: #FFFFFF !important;
+        }
+        
+        /* Links, headings, and interactive elements in yellow */
+        .high-contrast a, 
+        .high-contrast h1, 
+        .high-contrast h2, 
+        .high-contrast h3,
+        .high-contrast .logo h1,
+        .high-contrast .footer-column h3 {
+            color: yellow !important;
+        }
+        
+        /* Buttons in high contrast */
+        .high-contrast .btn-primary {
+            background-color: yellow !important;
+            color: black !important;
+            border-color: yellow !important;
+        }
+        
+        .high-contrast .btn-secondary {
+            background-color: black !important;
+            color: yellow !important;
+            border-color: yellow !important;
+        }
+        
+        .high-contrast .btn-primary:hover,
+        .high-contrast .btn-secondary:hover {
+            opacity: 0.8;
+        }
+        
+        /* Date badges and other accent elements */
+        .high-contrast .news-date {
+            background-color: yellow !important;
+            color: black !important;
+        }
+        
+        /* Form elements in high contrast */
+        .high-contrast .search-box {
+            background-color: black !important;
+            color: white !important;
+            border-color: white !important;
+        }
+        
+        .high-contrast .search-box::placeholder {
+            color: #CCCCCC !important;
+        }
+        
+        /* Slider dots in high contrast */
+        .high-contrast .dot {
+            background-color: white !important;
+        }
+        
+        .high-contrast .dot.active {
+            background-color: yellow !important;
+        }
+        
+        /* Social links in high contrast */
+        .high-contrast .social-links a {
+            background-color: black !important;
+            border: 1px solid white !important;
+            color: white !important;
+        }
+        
+        .high-contrast .social-links a:hover {
+            background-color: yellow !important;
+            color: black !important;
+        }
+        
+        /* Footer specifics in high contrast */
+        .high-contrast .footer-column ul li a {
+            color: white !important;
+        }
+        
+        .high-contrast .footer-column ul li a:hover {
+            color: yellow !important;
+        }
+        
+        .high-contrast .copyright {
+            color: #CCCCCC !important;
+            border-top-color: rgba(255, 255, 255, 0.3) !important;
+        }
+        
+        /* Accessibility panel in high contrast */
+        .high-contrast .accessibility-panel {
+            border-right: 2px solid white !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Қолжетімділік панелі -->
+    <div class="accessibility-panel">
+        <div class="accessibility-toggle">
+            <button class="accessibility-btn" id="fontSize" title="Мәтін үлкейту">
+                Aa+
+            </button>
+            <button class="accessibility-btn" id="contrast" title="Контрастты өзгерту">
+                ◐
+            </button>
+        </div>
+    </div>
+
+    <!-- Хедер -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="logo.png" alt="Логотип">
+                <h1>ЖобаMake</h1>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Басты бет</a></li>
+                    <li><a href="learning.html">Оқу материалдары</a></li>
+                    <li><a href="projects.html">Жобалар</a></li>
+                    <li><a href="teachers.html">Мұғалімдерге</a></li>
+                    <li><a href="parents.html">Ата-аналарға</a></li>
+                    <li><a href="ai-learning.html">AI арқылы оқыту</a></li>
+                </ul>
+            </nav>
+            
+        </div>
+    </header>
+
+    <!-- Баннер -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Әр бала – жобаға лайық. Әр жоба – дамуға жол.</h2>
+                <p>Инклюзивті білім беру арқылы барлық балаларға тең мүмкіндіктер жасаймыз.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Миссия секциясы -->
+    <section class="mission">
+        <div class="container">
+            <h2 class="section-title">Біздің миссиямыз</h2>
+            <div class="mission-content">
+                <div class="mission-text">
+                    <p>Бұл сайт – ерекше білім беру қажеттіліктері бар балалар үшін жобалық оқыту тәсілін бейімдеп енгізуге арналған платформа.</p>
+                    <p>Мұнда балалар өз әлеуетін жобалар арқылы танытады, ал мұғалімдер мен ата-аналарға арналған әдістемелік құралдар ұсынылады.</p>
+                    <p>Біз барлық балаларға олардың мүмкіндіктеріне қарамастан сапалы білім алуға және шығармашылық жобаларға қатысуға мүмкіндік береміз.</p>
+                </div>
+                <div class="mission-infographic">
+                    <div class="infographic-item">
+                        <i>👧</i>
+                        <h3>Балаларға</h3>
+                        <p>Интерактивті жобалар және қызықты тапсырмалар</p>
+                    </div>
+                    <div class="infographic-item">
+                        <i>👩‍🏫</i>
+                        <h3>Мұғалімдерге</h3>
+                        <p>Әдістемелік материалдар және сабақ жоспарлары</p>
+                    </div>
+                    <div class="infographic-item">
+                        <i>👨‍👩‍👧</i>
+                        <h3>Ата-аналарға</h3>
+                        <p>Психологиялық кеңестер және үй тапсырмалары</p>
+                    </div>
+                    <div class="infographic-item">
+                        <i>🧠</i>
+                        <h3>Мамандарға</h3>
+                        <p>Дефектологтар мен психологтарға арналған құралдар</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Негізгі бөлімдер -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Негізгі бөлімдер</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <div class="feature-content">
+                        <h3>Оқу материалдары</h3>
+                        <p>Инклюзивті жобаларға арналған бейімделген ресурстар мен оқу материалдары</p>
+                        <a href="learning.html" class="read-more">Толығырақ оқу →</a>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🧩</div>
+                    <div class="feature-content">
+                        <h3>Жобалар галереясы</h3>
+                        <p>Балалардың орындаған жобаларын тамашалаңыз және шабыт алыңыз</p>
+                        <a href="projects.html" class="read-more">Толығырақ оқу →</a>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">👩‍🏫</div>
+                    <div class="feature-content">
+                        <h3>Мұғалімдерге арналған</h3>
+                        <p>Сабақ жоспарлары мен әдістемелік нұсқаулар және кеңестер</p>
+                        <a href="teachers.html" class="read-more">Толығырақ оқу →</a>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍👩‍👧</div>
+                    <div class="feature-content">
+                        <h3>Ата-аналарға арналған</h3>
+                        <p>Психологиялық және әдістемелік көмек материалдары</p>
+                        <a href="parents.html" class="read-more">Толығырақ оқу →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Жаңалықтар секциясы -->
+    <section class="news">
+        <div class="container">
+            <h2 class="section-title">Жаңалықтар және оқиғалар</h2>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="https://qaz365.kz/cache/imagine/1200/uploads/news/2024/09/27/66f69f899c3ee686242745.jpeg" alt="Жаңалық суреті">
+                        <div class="news-date">15.04.2025</div>
+                    </div>
+                    <div class="news-content">
+                        <h3>Инклюзивті білім апталығы басталды</h3>
+                        <p>Қазақстан бойынша инклюзивті білім беруді дамытуға арналған апталық бастау алды.</p>
+                        <a href="https://qaz365.kz/society/9283-inkliuzivti-bilim-beru-almatyda-balabaksha-pedagogtary-ushin-biliktilikti-arttyru-kurstary-bastaldy/" class="read-more">Толығырақ оқу →</a>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="https://baq.kz/storage/cache_resize/news/2023/12/19/9vXNDXqAcN9FJGru5c6awOV6JCH8DdSSDyyGa6zQ.jpg_width=1200Xheight=autoXtype=1.jpg" alt="Жаңалық суреті">
+                        <div class="news-date">10.04.2025</div>
+                    </div>
+                    <div class="news-content">
+                        <h3>Жаңа жоба: Робототехника ерекше балалармен</h3>
+                        <p>Балалар үшін қолжетімді робототехника элементтерімен жаңа жобалық курс ашылуда.</p>
+                        <a href="https://baq.kz/biylgy-bilim-beru-salasynda-qanday-zhana-zhobalar-boldy-319693/" class="read-more">Толығырақ оқу →</a>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="https://ksu.edu.kz/images/InternationalOffice/DECIDE/image-08-01-21-01-26_1.jpeg" alt="Жаңалық суреті">
+                        <div class="news-date">05.04.2025</div>
+                    </div>
+                    <div class="news-content">
+                        <h3>Онлайн вебинар: Инклюзивті жобалық әдіс</h3>
+                        <p>Мұғалімдер мен ата-аналарға арналған тегін онлайн оқыту семинары.</p>
+                        <a href="https://ksu.edu.kz/kz/cooperation/erasmusplus/old-projects/decide/kurs-povysheniya-kvalifikacii-psihologo-pedagogicheskoe-soprovozhdenie-inklyuzivnogo-obrazovaniya/" class="read-more">Толығырақ оқу →</a>
+                    </div>
+                </div>
+            </div>
+            <div class="view-all-btn">
+                <a href="#" class="btn btn-primary">Барлық жаңалықтарды қарау</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Пікірлер секциясы -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Пікірлер</h2>
+            <div class="testimonials-slider">
+                <div class="testimonial-slide active">
+                    <div class="testimonial-avatar">
+                        <img src="https://img.lovepik.com/free-png/20211106/lovepik-simple-man-icon-png-image_400345200_wh1200.png" alt="Пікір авторы">
+                    </div>
+                    <div class="testimonial-quote">
+                        Балама жобалық оқытуды қолданғалы бері, өзіне деген сенімі артып, сабақтарға қызығушылығы оянды. Инклюзивті Жоба командасына алғысым шексіз!
+                    </div>
+                    <div class="testimonial-author">Әсел Жұмабаева</div>
+                    <div class="testimonial-role">Аутизм спектрі бойынша балалардың ата-анасы</div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <div class="testimonial-avatar">
+                        <img src="https://media.newyorker.com/photos/66d2358f1f531aabeb7b00d4/1:1/w_2000,h_2000,c_limit/Kang-English-Teacher-02_GALLERY_EVAN_0028.jpg" alt="Пікір авторы">
+                    </div>
+                    <div class="testimonial-quote">
+                        Мұғалім ретінде осы сайттың әдістемелік материалдары мен сабақ жоспарлары маған көп көмектесті. Ерекше балаларды жалпы сыныпқа біріктіруге жаңа тәсілдер таптым.
+                    </div>
+                    <div class="testimonial-author">Болат Асқаров</div>
+                    <div class="testimonial-role">Бастауыш сынып мұғалімі</div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <div class="testimonial-avatar">
+                        <img src="https://t3.ftcdn.net/jpg/02/65/18/30/360_F_265183061_NkulfPZgRxbNg3rvYSNGGwi0iD7qbmOp.jpg" alt="Пікір авторы">
+                    </div>
+                    <div class="testimonial-quote">
+                        Сайттағы интерактивті жобалар арқасында балалар шығармашылық әлеуетін ашып, өзара коммуникация дағдыларын жақсартуда. Жақсы платформа!
+                    </div>
+                    <div class="testimonial-author">Гүлнұр Сәрсенова</div>
+                    <div class="testimonial-role">Арнайы психолог</div>
+                </div>
+                
+                <div class="slider-dots">
+                    <span class="dot active" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Инклюзивті Жоба</h3>
+                    <p>Барлық балалар үшін тең мүмкіндіктер мен сапалы білім беру бастамасы.</p>
+                    <div class="social-links">
+                        <a href="#" title="Facebook">Fb</a>
+                        <a href="#" title="Instagram">Ig</a>
+                        <a href="#" title="Youtube">Yt</a>
+                        <a href="#" title="Telegram">Tg</a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Сайт картасы</h3>
+                    <ul>
+                        <li><a href="index.html">Басты бет</a></li>
+                        <li><a href="learning.html">Оқу материалдары</a></li>
+                        <li><a href="projects.html">Жобалар галереясы</a></li>
+                        <li><a href="teachers.html">Мұғалімдерге</a></li>
+                        <li><a href="parents.html">Ата-аналарға</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Байланыс</h3>
+                    <ul>
+                        <li>Email: info@inclusive.kz</li>
+                        <li>Телефон: +7 (7XX) XXX-XX-XX</li>
+                        <li>Мекенжай: Қазақстан, Астана қаласы, Қабанбай батыр көшесі, 53</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Құқықтық ақпарат</h3>
+                    <ul>
+                        <li><a href="#">Пайдалану ережелері</a></li>
+                        <li><a href="#">Құпиялылық саясаты</a></li>
+                        <li><a href="#">Авторлық құқық</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 Инклюзивті Жоба. Барлық құқықтар қорғалған.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Пікірлер слайдері үшін скрипт
+        let slideIndex = 1;
+        showSlides(slideIndex);
+        
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+        
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("testimonial-slide");
+            let dots = document.getElementsByClassName("dot");
+            
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            
+            for (i = 0; i < slides.length; i++) {
+                slides[i].className = slides[i].className.replace(" active", "");
+            }
+            
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            
+            slides[slideIndex-1].className += " active";
+            dots[slideIndex-1].className += " active";
+        }
+        
+        // Автоматты слайд өзгерту
+        setInterval(function() {
+            slideIndex++;
+            if (slideIndex > document.getElementsByClassName("testimonial-slide").length) {
+                slideIndex = 1;
+            }
+            showSlides(slideIndex);
+        }, 5000);
+        
+        // Қолжетімділік батырмалары үшін скрипт
+        document.getElementById('fontSize').addEventListener('click', function() {
+            document.body.classList.toggle('text-large');
+        });
+        
+        document.getElementById('contrast').addEventListener('click', function() {
+            document.body.classList.toggle('high-contrast');
+        });
+    </script>
+</body>
+</html>

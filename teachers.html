@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мұғалімдерге арналған - Инклюзивті Жоба</title>
+    <style>
+        /* Жалпы стильдер */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Хедер стильдері */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            color: #4a86e8;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover,
+        nav ul li a.active {
+            background-color: #4a86e8;
+            color: white;
+        }
+        
+        .search-login {
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-box {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            margin-right: 15px;
+            width: 200px;
+        }
+        
+        /* Басты бөлім - мұғалімдерге арналған */
+        .page-hero {
+            background-image: url('2.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            color: white;
+            text-align: center;
+        }
+        
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .page-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .page-hero h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .page-hero p {
+            font-size: 18px;
+        }
+        
+        /* Бөлім тақырыбы стилі */
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: #333;
+        }
+        
+        /* Мазмұн бөлімі */
+        .main-content {
+            padding: 50px 0;
+            background-color: white;
+        }
+        
+        /* Маңызды секция */
+        .section-intro {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            text-align: center;
+        }
+        
+        .section-intro p {
+            font-size: 18px;
+            color: #555;
+        }
+        
+        /* Қадамдармен нұсқаулық */
+        .planning-guide {
+            background-color: #f8f9fa;
+            padding: 40px;
+            border-radius: 10px;
+            margin-bottom: 50px;
+        }
+        
+        .planning-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .step-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #4a86e8;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .step-card h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+            color: #333;
+        }
+        
+        .step-card p {
+            color: #555;
+            font-size: 16px;
+        }
+        
+        /* Материалдар бөлімі */
+        .materials {
+            margin-bottom: 50px;
+        }
+        
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .material-card {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid #eee;
+        }
+        
+        .material-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .material-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+            color: #4a86e8;
+        }
+        
+        .material-card h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .material-card p {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background-color: #4a86e8;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .download-btn:hover {
+            background-color: #3a76d8;
+            transform: translateY(-2px);
+        }
+        
+        /* Кеңестер бөлімі */
+        .tips {
+            margin-bottom: 50px;
+        }
+        
+        .tips-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .tips-categories {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .category-list {
+            list-style: none;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .category-list li {
+            border-bottom: 1px solid #eee;
+        }
+        
+        .category-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .category-list li a {
+            display: block;
+            padding: 15px 20px;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .category-list li a:hover,
+        .category-list li a.active {
+            background-color: #4a86e8;
+            color: white;
+        }
+        
+        .tips-content {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .tip-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+        
+        .tip-card:last-child {
+            margin-bottom: 0;
+        }
+        
+        .tip-card h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+            color: #333;
+            display: flex;
+            align-items: center;
+        }
+        
+        .tip-card h3 span {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: #4a86e8;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        
+        .tip-card p {
+            color: #555;
+            font-size: 16px;
+        }
+        
+        /* Қосымша құралдар */
+        .resources {
+            margin-bottom: 50px;
+        }
+        
+        .resources-tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 30px;
+        }
+        
+        .tab-button {
+            padding: 15px 25px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            color: #666;
+            transition: all 0.3s;
+        }
+        
+        .tab-button.active {
+            color: #4a86e8;
+            border-bottom: 3px solid #4a86e8;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .resource-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .resource-image {
+            height: 180px;
+            background-color: #eee;
+            overflow: hidden;
+        }
+        
+        .resource-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s;
+        }
+        
+        .resource-card:hover .resource-image img {
+            transform: scale(1.05);
+        }
+        
+        .resource-content {
+            padding: 20px;
+        }
+        
+        .resource-content h3 {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .resource-content p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .resource-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #999;
+            font-size: 14px;
+        }
+        
+        /* CTA секция */
+        .cta-section {
+            background-color: #4a86e8;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-white {
+            background-color: white;
+            color: #4a86e8;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-white:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-3px);
+        }
+        
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* Футер стильдері */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+            padding-right: 20px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #4a86e8;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #4a86e8;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: #4a86e8;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #999;
+            font-size: 14px;
+        }
+        
+        /* Қолжетімділік панелі */
+        .accessibility-panel {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: white;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            z-index: 999;
+        }
+        
+        .accessibility-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .accessibility-btn {
+            background-color: #f8f9fa;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .accessibility-btn:hover {
+            background-color: #e9ecef;
+        }
+        
+        /* Іздеу жүйесі */
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        
+        .search-form {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 12px 20px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            font-size: 16px;
+        }
+        
+        .search-button {
+            background-color: #4a86e8;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 12px 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .search-button:hover {
+            background-color: #3a76d8;
+        }
+        
+        /* Үлкейтілген мәтін үшін класстар */
+        .text-large {
+            font-size: 1.2em !important;
+        }
+        
+        .text-large h1 {
+            font-size: 1.2em !important;
+        }
+        
+        .text-large h2 {
+            font-size: 1.2em !important;
+        }
+        
+        .text-large h3 {
+            font-size: 1.2em !important;
+        }
+        
+        .text-large p {
+            font-size: 1.2em !important;
+        }
+        
+        .text-large li {
+            font-size: 1.2em !important;
+        }
+        
+        .text-large .btn, 
+        .text-large .download-btn {
+            font-size: 1.2em !important;
+        }
+        
+        /* Enhanced High Contrast Styles */
+        .high-contrast {
+            background-color: black !important;
+            color: white !important;
+        }
+        
+        /* Override all sections to black background in high contrast mode */
+        .high-contrast body,
+        .high-contrast header,
+        .high-contrast .hero,
+        .high-contrast .mission,
+        .high-contrast .features,
+        .high-contrast .news,
+        .high-contrast .testimonials,
+        .high-contrast footer,
+        .high-contrast .feature-card,
+        .high-contrast .news-card,
+        .high-contrast .accessibility-panel,
+        .high-contrast .infographic-item,
+        .high-contrast .testimonial-slide,
+        .high-contrast .page-hero,
+        .high-contrast .main-content,
+        .high-contrast .planning-guide,
+        .high-contrast .step-card,
+        .high-contrast .material-card,
+        .high-contrast .tip-card,
+        .high-contrast .category-list li a,
+        .high-contrast .resources-tabs,
+        .high-contrast .tab-content,
+        .high-contrast .resource-card,
+        .high-contrast .cta-section {
+            background-color: black !important;
+            color: white !important;
+            border-color: white !important;
+        }
+        
+        /* Ensure elements with gray backgrounds turn black */
+        .high-contrast .feature-card .feature-icon,
+        .high-contrast .news-card,
+        .high-contrast .infographic-item,
+        .high-contrast .accessibility-btn,
+        .high-contrast .material-card,
+        .high-contrast .step-card,
+        .high-contrast .tip-card,
+        .high-contrast .resource-card {
+            background-color: black !important;
+            color: white !important;
+            border: 1px solid white !important;
+        }
+        
+        .high-contrast .page-hero::before {
+            background-color: rgba(0, 0, 0, 0.7) !important;
+        }
+        
+        /* For better readability of text */
+        .high-contrast p, 
+        .high-contrast li {
+            color: #FFFFFF !important;
+        }
+        
+        /* Links, headings, and interactive elements in yellow */
+        .high-contrast a, 
+        .high-contrast h1, 
+        .high-contrast h2, 
+        .high-contrast h3,
+        .high-contrast .logo h1,
+        .high-contrast .footer-column h3,
+        .high-contrast .step-number,
+        .high-contrast .material-icon {
+            color: yellow !important;
+        }
+        
+        /* Buttons in high contrast */
+        .high-contrast .btn,
+        .high-contrast .download-btn,
+        .high-contrast .search-button {
+            background-color: yellow !important;
+            color: black !important;
+            border-color: yellow !important;
+        }
+        
+        .high-contrast .btn-outline {
+            background-color: black !important;
+            color: yellow !important;
+            border-color: yellow !important;
+        }
+        
+        .high-contrast .btn:hover,
+        .high-contrast .download-btn:hover,
+        .high-contrast .btn-outline:hover,
+        .high-contrast .search-button:hover {
+            opacity: 0.8;
+        }
+        
+        /* Form elements in high contrast */
+        .high-contrast .search-box,
+        .high-contrast .search-input {
+            background-color: black !important;
+            color: white !important;
+            border-color: white !important;
+        }
+        
+        .high-contrast .search-box::placeholder,
+        .high-contrast .search-input::placeholder {
+            color: #CCCCCC !important;
+        }
+        
+        /* Social links in high contrast */
+        .high-contrast .social-links a {
+            background-color: black !important;
+            border: 1px solid white !important;
+            color: white !important;
+        }
+        
+        .high-contrast .social-links a:hover {
+            background-color: yellow !important;
+            color: black !important;
+        }
+        
+        /* Footer specifics in high contrast */
+        .high-contrast .footer-column ul li a {
+            color: white !important;
+        }
+        
+        .high-contrast .footer-column ul li a:hover {
+            color: yellow !important;
+        }
+        
+        .high-contrast .copyright {
+            color: #CCCCCC !important;
+            border-top-color: rgba(255, 255, 255, 0.3) !important;
+        }
+        
+        /* Accessibility panel in high contrast */
+        .high-contrast .accessibility-panel {
+            border-right: 2px solid white !important;
+        }
+        
+        /* Tabs in high contrast */
+        .high-contrast .tab-button {
+            color: white !important;
+        }
+        
+        .high-contrast .tab-button.active {
+            color: yellow !important;
+            border-bottom-color: yellow !important;
+        }
+        
+        /* Special elements in high contrast */
+        .high-contrast .step-number {
+            background-color: yellow !important;
+            color: black !important;
+        }
+        
+        .high-contrast .category-list li a:hover,
+        .high-contrast .category-list li a.active {
+            background-color: yellow !important;
+            color: black !important;
+        }
+        
+        /* Респонсив стильдер */
+        @media screen and (max-width: 992px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .search-login {
+                width: 100%;
+                justify-content: center;
+                margin-top: 15px;
+            }
+            
+            .tips-container {
+                flex-direction: column;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 28px;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 26px;
+            }
+            
+            .footer-column {
+                min-width: 100%;
+            }
+            
+            .planning-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Қолжетімділік панелі -->
+    <div class="accessibility-panel">
+        <div class="accessibility-toggle">
+            <button class="accessibility-btn" id="fontSize" title="Мәтін үлкейту">
+                Aa+
+            </button>
+            <button class="accessibility-btn" id="contrast" title="Контрастты өзгерту">
+                ◐
+            </button>
+        </div>
+    </div>
+
+    <!-- Хедер -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="logo.png" alt="Логотип">
+                <h1>ЖобаMake</h1>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html">Басты бет</a></li>
+                    <li><a href="learning.html">Оқу материалдары</a></li>
+                    <li><a href="projects.html">Жобалар</a></li>
+                    <li><a href="teachers.html" class="active">Мұғалімдерге</a></li>
+                    <li><a href="parents.html">Ата-аналарға</a></li>
+                    <li><a href="ai-learning.html">AI арқылы оқыту</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Басты бөлім -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero-content">
+                <h1>Мұғалімдерге арналған</h1>
+                <p>Инклюзивті сыныптарда жобалық оқытуды тиімді қолданудың құралдары мен кеңестері</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Іздеу жүйесі -->
+    <div class="main-content">
+        <div class="container">
+            <div class="search-container">
+                <form class="search-form">
+                    <input type="text" class="search-input" placeholder="Материалдарды немесе кеңестерді іздеу...">
+                    <button type="submit" class="search-button">Іздеу</button>
+                </form>
+            </div>
+
+            <div class="section-intro">
+                <h2 class="section-title">Инклюзивті сыныпта жобалық оқыту</h2>
+                <p>Бұл бөлімде Сіз инклюзивті сыныптарда жобалық оқытуды тиімді ұйымдастыруға арналған практикалық материалдар мен кеңестер таба аласыз. Барлық құралдар тәжірибеге бағытталған және күнделікті жұмыста қолдануға ыңғайлы.</p>
+            </div>
+
+            <!-- Қадамдармен нұсқаулық -->
+            <div class="planning-guide">
+                <h2 class="section-title">Жобаны жоспарлау бойынша нұсқаулық</h2>
+                <div class="planning-steps">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3>Жоба мақсатын анықтау</h3>
+                        <p>Жобаның негізгі мақсатын және күтілетін нәтижелерін нақты анықтаңыз. Мақсаттарды барлық оқушылардың мүмкіндіктеріне сәйкес бейімдеп, әр оқушы үшін жетістік деңгейін анықтаңыз.</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3>Тапсырмаларды бейімдеу</h3>
+                        <p>Оқушылардың жеке ерекшеліктерін ескере отырып, тапсырмаларды бейімдеңіз. Бір жобада әртүрлі қиындық деңгейіндегі тапсырмаларды ұсынып, балаларға таңдау мүмкіндігін беріңіз.</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3>Инклюзивті топтарды құру</h3>
+                        <p>Әртүрлі мүмкіндіктері бар оқушыларды біріктіретін топтар құрыңыз. Топтарда рөлдерді оқушылардың мүмкіндіктеріне қарай бөліп, әр оқушы өзінің күшті жақтарын көрсете алатын жағдай жасаңыз.</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h3>Уақытты тиімді бөлу</h3>
+                        <p>Жобаны кезеңдерге бөліп, әр кезеңге нақты уақыт белгілеңіз. Кейбір оқушыларға қосымша уақыт пен қолдау қажет болатынын ескеріп, икемді жоспар құрыңыз.</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">5</div>
+                        <h3>Жеке қолдау көрсету</h3>
+                        <p>Қосымша қолдауды қажет ететін оқушыларға арналған нақты стратегиялар дайындаңыз. Көмекші карточкалар, визуалды материалдар және қадамдық нұсқаулықтар дайындаңыз.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Материалдар бөлімі -->
+            <section class="materials">
+                <h2 class="section-title">Қолдануға дайын материалдар</h2>
+                <div class="materials-grid">
+                    <div class="material-card">
+                        <div class="material-icon">📝</div>
+                        <h3>Жоба жоспары шаблоны</h3>
+                        <p>Инклюзивті сыныпта жобаны ұйымдастыруға арналған толық шаблон. Word форматында жүктеп алуға болады.</p>
+                        <a href="https://docs.google.com/document/d/1V0Rc9XqROCQlixwAFZlzEtucLZDBFNgn/export?format=pdf" class="download-btn" target="_blank">Жүктеу</a>
+                    </div>
+                    
+                    <div class="material-card">
+                        <div class="material-icon">📊</div>
+                        <h3>Оқушыны бақылау парағы</h3>
+                        <p>Оқушының белсенділігін, қызығушылығын және қолдауды қажет ету деңгейін бақылауға арналған сауалнама.</p>
+                        <a href="https://docs.google.com/document/d/1zr4u9CqOp9iVS-Dmh09RgYLQ0YgMh_TB/export?format=pdf" class="download-btn" target="_blank">Жүктеу</a>
+                    </div>
+                    
+                    <div class="material-card">
+                        <div class="material-icon">📋</div>
+                        <h3>Қарапайым тапсырма үлгілері</h3>
+                        <p>Ерекше білім беруді қажет ететін оқушыларға арналған бейімделген тапсырмалар жинағы.</p>
+                        <a href="https://docs.google.com/document/d/1BQE1dC7rhj-9u4_t8Yqm4wbTBacNgwRe/export?format=pdf" class="download-btn" target="_blank">Жүктеу</a>
+                    </div>
+                    
+                    <div class="material-card">
+                        <div class="material-icon">🔄</div>
+                        <h3>Рефлексия парағы</h3>
+                        <p>Оқушының жоба бойынша өз ойын білдіруіне арналған қарапайым рефлексия сұрақтары мен формалары.</p>
+                        <a href="https://docs.google.com/document/d/1GOdiDgyTfvIALoNLjoaF27dvLE-8Wpml/export?format=pdf" class="download-btn" target="_blank">Жүктеу</a>
+                    </div>
+                </div>
+            </section>
+<!-- Кеңестер бөлімі -->
+<section class="tips">
+    <h2 class="section-title">Практикалық кеңестер</h2>
+    <div class="tips-container">
+        <div class="tips-categories">
+            <ul class="category-list">
+                <li><a href="#" class="active" onclick="showTips('nazaraudaru')">Назар аудару қиындықтары</a></li>
+                <li><a href="#" onclick="showTips('tusindiru')">Қарапайым тілмен түсіндіру</a></li>
+                <li><a href="#" onclick="showTips('orta')">Ыңғайлы ортаны құру</a></li>
+                <li><a href="#" onclick="showTips('motivacia')">Мотивация беру</a></li>
+                <li><a href="#" onclick="showTips('tartip')">Тәртіп сақтау</a></li>
+                <li><a href="#" onclick="showTips('ataana')">Ата-аналармен жұмыс</a></li>
+            </ul>
+        </div>
+
+        <div class="tips-content" id="tips-content">
+            <!-- Кеңестер осында жүктеледі -->
+        </div>
+    </div>
+</section>
+
+            <!-- Қосымша құралдар -->
+            <section class="resources">
+                <h2 class="section-title">Қосымша құралдар</h2>
+                <div class="resources-tabs">
+                    <button class="tab-button active">Видеосабақтар</button>
+                    <button class="tab-button">Визуал материалдар</button>
+                    <button class="tab-button">Пайдалы кітаптар</button>
+                </div>
+                
+                <div class="tab-content active">
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <div class="resource-image">
+                                <img src="/api/placeholder/300/180" alt="Инклюзивті топ құру">
+                            </div>
+                            <div class="resource-content">
+                                <h3>Инклюзивті топтарды құру техникасы</h3>
+                                <p>Әртүрлі мүмкіндіктері бар оқушылардан топ құру принциптері туралы 3 минуттық видеосабақ.</p>
+                                <div class="resource-meta">
+                                    <span>3:15</span>
+                                    <span>22.03.2025</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <div class="resource-image">
+                                <img src="/api/placeholder/300/180" alt="Визуалды нұсқаулық">
+                            </div>
+                            <div class="resource-content">
+                                <h3>Визуалды нұсқаулықтар дайындау</h3>
+                                <p>Ерекше білім беруді қажет ететін оқушыларға арналған визуалды нұсқаулықтарды дайындау жолдары.</p>
+                                <div class="resource-meta">
+                                    <span>2:42</span>
+                                    <span>15.03.2025</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <div class="resource-image">
+                                <img src="/api/placeholder/300/180" alt="Жобаны бағалау">
+                            </div>
+                            <div class="resource-content">
+                                <h3>Жобаны бағалаудың инклюзивті тәсілдері</h3>
+                                <p>Әртүрлі оқушылардың жетістіктерін әділ бағалауға арналған практикалық кеңестер.</p>
+                                <div class="resource-meta">
+                                    <span>4:10</span>
+                                    <span>10.03.2025</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content">
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <div class="resource-image">
+                                <img src="/api/placeholder/300/180" alt="Пиктограммалар">
+                            </div>
+                            <div class="resource-content">
+                                <h3>Пиктограммалар жинағы</h3>
+                                <p>Жоба кезеңдерін түсіндіруге арналған пиктограммалар жинағы. PDF форматында жүктеуге болады.</p>
+                                <div class="resource-meta">
+                                    <span>15 бет</span>
+                                    <span>PDF, 5.2 MB</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <div class="resource-image">
+                                <img src="/api/placeholder/300/180" alt="Карточкалар">
+                            </div>
+                            <div class="resource-content">
+                                <h3>Визуал карточкалар</h3>
+                                <p>Жобаның әр кезеңіне арналған визуалды карточкалар. Басып шығаруға дайын форматта.</p>
+                                <div class="resource-meta">
+                                    <span>20 карточка</span>
+                                    <span>PDF, 8.4 MB</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <div class="resource-image">
+                                <img src="/api/placeholder/300/180" alt="Постер үлгілері">
+                            </div>
+                            <div class="resource-content">
+                                <h3>Сынып постерлері</h3>
+                                <p>Жоба барысында сыныпта ілуге арналған қарапайым және түсінікті постерлер.</p>
+                                <div class="resource-meta">
+                                    <span>5 постер</span>
+                                    <span>PDF, 12.8 MB</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content">
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <div class="resource-image">
+                                <img src="/api/placeholder/300/180" alt="Кітап">
+                            </div>
+                            <div class="resource-content">
+                                <h3>Инклюзивті білім беру негіздері</h3>
+                                <p>Мұғалімдерге арналған қарапайым тілмен жазылған практикалық нұсқаулық.</p>
+                                <div class="resource-meta">
+                                    <span>А. Ахметова</span>
+                                    <span>2024</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <div class="resource-image">
+                                <img src="/api/placeholder/300/180" alt="Кітап">
+                            </div>
+                            <div class="resource-content">
+                                <h3>Жобалық оқыту әдістері</h3>
+                                <p>Инклюзивті сыныптарда жобалық оқытуды ұйымдастыру бойынша тәжірибелік кеңестер.</p>
+                                <div class="resource-meta">
+                                    <span>М. Сәрсенбаев</span>
+                                    <span>2023</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <div class="resource-image">
+                                <img src="/api/placeholder/300/180" alt="Журнал">
+                            </div>
+                            <div class="resource-content">
+                                <h3>Инклюзивті білім беру журналы</h3>
+                                <p>Инклюзивті білім беру мәселелеріне арналған тоқсан сайынғы журнал.</p>
+                                <div class="resource-meta">
+                                    <span>Тоқсан сайын</span>
+                                    <span>2025</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA секция -->
+            <section class="cta-section">
+                <div class="container">
+                    <div class="cta-content">
+                        <h2>Біздің қауымдастыққа қосылыңыз</h2>
+                        <p>Тәжірибемен бөлісу, сұрақтар қою және өзге мұғалімдермен байланысу арқылы инклюзивті білім беру саласында кәсіби дамуыңызды жалғастырыңыз.</p>
+                        <div class="cta-buttons">
+                            <a href="#" class="btn btn-white">Тіркелу</a>
+                            <a href="#" class="btn btn-outline">Қосымша ақпарат</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Инклюзивті Жоба</h3>
+                    <p>Инклюзивті білім беруді дамытуға арналған платформа. Біз барлық балаларға сапалы білім алуға тең мүмкіндік жасауға тырысамыз.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                        <a href="#"><i class="fa fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Навигация</h3>
+                    <ul>
+                        <li><a href="index.html">Басты бет</a></li>
+                        <li><a href="learning.html">Оқу материалдары</a></li>
+                        <li><a href="projects.html">Жобалар</a></li>
+                        <li><a href="teachers.html">Мұғалімдерге</a></li>
+                        <li><a href="parents.html">Ата-аналарға</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Байланыс</h3>
+                    <ul>
+                        <li><a href="#">info@inclusive.kz</a></li>
+                        <li><a href="#">+7 (7xx) xxx-xx-xx</a></li>
+                        <li><a href="#">Алматы қ., Абай даңғылы, 150</a></li>
+                        <li><a href="#">Байланыс формасы</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Инклюзивті Жоба. Барлық құқықтар қорғалған.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+// Қолжетімділік функциялары
+document.addEventListener('DOMContentLoaded', function() {
+    if (document.getElementById('fontSize')) {
+        document.getElementById('fontSize').addEventListener('click', function() {
+            document.body.classList.toggle('text-large');
+        });
+    }
+    
+    if (document.getElementById('contrast')) {
+        document.getElementById('contrast').addEventListener('click', function() {
+            document.body.classList.toggle('high-contrast');
+        });
+    }
+    
+    // Табтарды ауыстыру
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    tabButtons.forEach((button, index) => {
+        button.addEventListener('click', () => {
+            // Active класстарды жою
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Таңдалған табқа active қосу
+            button.classList.add('active');
+            tabContents[index].classList.add('active');
+        });
+    });
+
+    // Кеңестер бөлімі үшін деректер
+    const tipsData = {
+        nazaraudaru: [
+            {
+                title: "Тапсырманы бөліктерге бөліңіз",
+                text: "Назар аудару қиын оқушыларға тапсырманы шағын бөліктерге бөліп беріңіз. Әр бөлігін орындауға нақты уақыт белгілеп, орындалғаннан кейін кішкене демалыс беріңіз."
+            },
+            {
+                title: "Визуалды уақыт өлшегіштер қолданыңыз",
+                text: "Таймер немесе құм сағаты сияқты визуалды уақыт өлшегіштер назар аударуға көмектеседі."
+            },
+            {
+                title: "Топтық тапсырмаларда белсенді рөл беріңіз",
+                text: "Мысалы, материалдарды тарату, уақытты бақылау немесе презентация жасау. Бұл шоғырлануға көмектеседі."
+            }
+        ],
+        tusindiru: [
+            {
+                title: "Қарапайым сөйлемдер пайдаланыңыз",
+                text: "Күрделі терминдерден аулақ болып, балаға түсінікті сөздерді қолданыңыз."
+            },
+            {
+                title: "Мысал келтіріңіз",
+                text: "Күнделікті өмірден мысалдар айту арқылы түсінуді жеңілдетіңіз."
+            },
+            {
+                title: "Көрнекі құралдар қолданыңыз",
+                text: "Кестелер, суреттер және сызбалар түсінікті арттырады."
+            }
+        ],
+        orta: [
+            {
+                title: "Орынды ыңғайластырыңыз",
+                text: "Оқушының отыратын орны жарық, тыныш әрі ыңғайлы болсын."
+            },
+            {
+                title: "Шуды азайтыңыз",
+                text: "Көп дыбыстан аулақ болу балаға шоғырлануға көмектеседі."
+            },
+            {
+                title: "Материалдарды алдын ала дайындаңыз",
+                text: "Қажетті құралдар қолжетімді болуы керек."
+            }
+        ],
+        motivacia: [
+            {
+                title: "Жетістіктерін атап өтіңіз",
+                text: "Шағын жетістіктердің өзін мақтап отырыңыз."
+            },
+            {
+                title: "Ойын элементтерін қолданыңыз",
+                text: "Оқыту барысында ойын қолдану қызығушылықты арттырады."
+            },
+            {
+                title: "Қызықты тапсырмалар беріңіз",
+                text: "Оқушының қызығушылығына сай тапсырмалар дайындаңыз."
+            }
+        ],
+        tartip: [
+            {
+                title: "Ережелерді нақты белгілеңіз",
+                text: "Түсінікті және қысқа ережелер орнатыңыз."
+            },
+            {
+                title: "Тұрақты тәртіп орнатыңыз",
+                text: "Сабақ кестесі мен күн тәртібін ұстану маңызды."
+            },
+            {
+                title: "Кері байланыс беріңіз",
+                text: "Оқушының мінез-құлқы жайлы дер кезінде пікір айтыңыз."
+            }
+        ],
+        ataana: [
+            {
+                title: "Ашық байланыс орнатыңыз",
+                text: "Ата-анамен тұрақты және сенімді байланыс ұстаңыз."
+            },
+            {
+                title: "Үй тапсырмасы туралы ақпарат беріңіз",
+                text: "Ата-ана балаға көмектесу үшін не істеу керегін білуі тиіс."
+            },
+            {
+                title: "Бірлескен іс-шаралар ұйымдастырыңыз",
+                text: "Ата-аналарды мектеп өміріне тарту олардың белсенділігін арттырады."
+            }
+        ]
+    };
+
+    // Кеңестерді көрсету функциясы
+    function showTips(category) {
+        const tips = tipsData[category];
+        const contentDiv = document.getElementById("tips-content");
+        
+        if (!contentDiv) {
+            console.error("tips-content элементі табылмады");
+            return;
+        }
+        
+        contentDiv.innerHTML = "";
+        
+        const links = document.querySelectorAll('.category-list a');
+        links.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('onclick') && link.getAttribute('onclick').includes(category)) {
+                link.classList.add('active');
+            }
+        });
+
+        tips.forEach((tip, index) => {
+            const card = document.createElement("div");
+            card.className = "tip-card";
+            card.innerHTML = `<h3><span>${index + 1}</span> ${tip.title}</h3><p>${tip.text}</p>`;
+            contentDiv.appendChild(card);
+        });
+    }
+
+    // Категория сілтемелері үшін оқиғалар орнату
+    const categoryLinks = document.querySelectorAll('.category-list a');
+    categoryLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const category = this.getAttribute('onclick').match(/'([^']+)'/)[1];
+            showTips(category);
+        });
+    });
+
+    // Алғашқы бөлімді көрсету
+    showTips('nazaraudaru');
+});
+    </script>
+</body>
+</html>
