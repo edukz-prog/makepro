@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Жобалар галереясы - Инклюзивті Жоба</title>
+    <style>
+/* Жалпы стильдер */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Хедер стильдері */
+header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    margin-right: 10px;
+}
+
+.logo h1 {
+    font-size: 24px;
+    color: #4a86e8;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    background-color: #4a86e8;
+    color: white;
+}
+
+.search-login {
+    display: flex;
+    align-items: center;
+}
+
+.search-box {
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    margin-right: 15px;
+    width: 200px;
+}
+
+
+/* Жобалар галереясы стильдері */
+.gallery-header {
+    background-color: #4a86e8;
+    padding: 50px 0;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.gallery-header h2 {
+    font-size: 36px;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.gallery-header p {
+    font-size: 18px;
+    max-width: 700px;
+    margin: 0 auto 25px;
+    color: white;
+}
+
+/* Іздеу және сүзгілеу */
+.search-filter-section {
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.search-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    flex-grow: 1;
+    padding: 12px 20px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    font-size: 16px;
+    min-width: 200px;
+}
+
+.filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.filter-select {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    font-size: 16px;
+    min-width: 150px;
+    cursor: pointer;
+}
+
+.filter-button {
+    background-color: #4a86e8;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.filter-button:hover {
+    background-color: #3a76d8;
+}
+
+.reset-filters {
+    background-color: #f5f5f5;
+    color: #555;
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.reset-filters:hover {
+    background-color: #e9e9e9;
+}
+
+/* Жобалар торы */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.project-card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.project-image {
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.05);
+}
+
+.project-category {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #4a86e8;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.project-content {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #666;
+}
+
+.project-meta span {
+    display: flex;
+    align-items: center;
+}
+
+.project-meta i {
+    margin-right: 5px;
+    font-size: 16px;
+}
+
+.project-description {
+    margin-bottom: 15px;
+    color: #555;
+    flex-grow: 1;
+}
+
+.project-link {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #f5f5f5;
+    color: #4a86e8;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+.project-link:hover {
+    background-color: #4a86e8;
+    color: white;
+}
+
+/* Көбірек жүктеу батырмасы */
+.load-more {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.load-more-btn {
+    background-color: transparent;
+    color: #4a86e8;
+    border: 2px solid #4a86e8;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.load-more-btn:hover {
+    background-color: #4a86e8;
+    color: white;
+}
+
+/* Жоба модальды терезесі */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 0;
+    width: 90%;
+    max-width: 1000px;
+    border-radius: 10px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    animation: modalopen 0.5s;
+}
+
+@keyframes modalopen {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 10;
+}
+
+.close-button:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.project-slider {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
+}
+
+.project-slide {
+    width: 100%;
+    height: 100%;
+}
+
+.project-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slider-nav {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.slider-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.slider-dot.active {
+    background-color: white;
+    transform: scale(1.2);
+}
+
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 5;
+}
+
+.slider-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev-slide {
+    left: 20px;
+}
+
+.next-slide {
+    right: 20px;
+}
+
+.project-details {
+    padding: 30px;
+}
+
+.project-details h3 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.project-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #666;
+}
+
+.project-info span {
+    display: flex;
+    align-items: center;
+    background-color: #f5f5f5;
+    padding: 5px 12px;
+    border-radius: 20px;
+}
+
+.project-info i {
+    margin-right: 8px;
+    color: #4a86e8;
+}
+
+.project-desc-section {
+    margin-bottom: 25px;
+}
+
+.project-desc-section h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #4a86e8;
+}
+
+.project-desc-section p {
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #555;
+}
+
+.project-steps {
+    margin-bottom: 25px;
+}
+
+.project-steps ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.project-steps li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+}
+
+.project-steps li:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 20px;
+    height: 20px;
+    background-color: #4a86e8;
+    border-radius: 50%;
+}
+
+.project-steps li:after {
+    content: '';
+    position: absolute;
+    left: 9px;
+    top: 12px;
+    width: 6px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.project-download {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #4a86e8;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: all 0.3s;
+    margin-top: 20px;
+}
+
+.project-download:hover {
+    background-color: #3a76d8;
+    transform: translateY(-2px);
+}
+
+/* Қолжетімділік панелі */
+.accessibility-panel {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    border-radius: 0 10px 10px 0;
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    z-index: 999;
+}
+
+.accessibility-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.accessibility-btn {
+    background-color: #f8f9fa;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+.accessibility-btn:hover {
+    background-color: #e9ecef;
+}
+
+/* Футер стильдері */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 50px 0 20px;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 30px;
+    padding-right: 20px;
+}
+
+.footer-column h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #4a86e8;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    color: #ddd;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.footer-column ul li a:hover {
+    color: #4a86e8;
+    padding-left: 5px;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.social-links a:hover {
+    background-color: #4a86e8;
+    transform: translateY(-3px);
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #999;
+    font-size: 14px;
+}
+
+.sponsor-logos {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.sponsor-logos img {
+    height: 40px;
+    filter: grayscale(1) brightness(1.5);
+    opacity: 0.7;
+    transition: all 0.3s;
+}
+
+.sponsor-logos img:hover {
+    filter: grayscale(0) brightness(1);
+    opacity: 1;
+}
+
+/* Респонсив стильдер */
+@media screen and (max-width: 992px) {
+    .header-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    nav ul li {
+        margin: 5px 10px;
+    }
+    
+    .search-login {
+        width: 100%;
+        justify-content: center;
+        margin-top: 15px;
+    }
+    
+    .project-slider {
+        height: 300px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .search-container, .filter-container {
+        flex-direction: column;
+    }
+    
+    .filter-select, .search-input {
+        width: 100%;
+    }
+    
+    .project-slider {
+        height: 250px;
+    }
+    
+    .project-details {
+        padding: 20px;
+    }
+    
+    .project-details h3 {
+        font-size: 22px;
+    }
+    
+    .footer-column {
+        min-width: 100%;
+    }
+}
+
+/* Үлкейтілген мәтін үшін класстар */
+.text-large {
+    font-size: 1.2em !important;
+}
+
+/* Жоғары контраст үшін класстар */
+body.high-contrast {
+    background-color: black !important;
+    color: white !important;
+}
+
+/* Барлық шекаралар сары түске өзгертілген жаңартылған CSS */
+.high-contrast header,
+.high-contrast .gallery-header,
+.high-contrast .search-filter-section,
+.high-contrast .project-card,
+.high-contrast .modal-content,
+.high-contrast .accessibility-panel {
+    background-color: black !important;
+    color: white !important;
+    border: 1px solid yellow !important; /* Шекара сары түске өзгертілді */
+}
+
+.high-contrast .logo h1,
+.high-contrast nav ul li a,
+.high-contrast .gallery-header h2,
+.high-contrast .project-title,
+.high-contrast .project-desc-section h4 {
+    color: yellow !important;
+}
+
+.high-contrast nav ul li a:hover,
+.high-contrast nav ul li a.active {
+    background-color: yellow !important;
+    color: black !important;
+}
+
+.high-contrast .search-box,
+.high-contrast .search-input,
+.high-contrast .filter-select {
+    background-color: #222 !important;
+    color: white !important;
+    border: 1px solid yellow !important; /* Шекара сары түске өзгертілді */
+}
+
+.high-contrast .filter-button,
+.high-contrast .project-link:hover,
+.high-contrast .project-download,
+.high-contrast .load-more-btn:hover,
+.high-contrast .footer-column h3 {
+    background-color: yellow !important;
+    color: black !important;
+    border-color: yellow !important;
+}
+
+.high-contrast .project-link,
+.high-contrast .load-more-btn {
+    background-color: transparent !important;
+    color: yellow !important;
+    border: 2px solid yellow !important;
+}
+
+.high-contrast .project-meta,
+.high-contrast .project-description,
+.high-contrast .project-desc-section p,
+.high-contrast .footer-column ul li a {
+    color: white !important;
+}
+
+.high-contrast .project-category {
+    background-color: yellow !important;
+    color: black !important;
+    border: 1px solid yellow !important; /* Шекара сары түске өзгертілді */
+}
+
+.high-contrast .project-info span {
+    background-color: #222 !important;
+    color: white !important;
+    border: 1px solid yellow !important; /* Шекара сары түске өзгертілді */
+}
+
+.high-contrast .project-steps li:before {
+    background-color: yellow !important;
+    border: 1px solid yellow !important; /* Шекара сары түске өзгертілді */
+}
+
+.high-contrast .project-steps li:after {
+    border-color: black !important;
+}
+
+/* Социалдық сілтемелер шекарасы */
+.high-contrast .social-links a {
+    background-color: #333 !important;
+    color: white !important;
+    border: 1px solid yellow !important; /* Шекара сары түске өзгертілді */
+}
+
+.high-contrast .social-links a:hover {
+    background-color: yellow !important;
+    color: black !important;
+}
+
+/* Демеушілер логотиптері шекарасы */
+.high-contrast .sponsor-logos img {
+    filter: brightness(0) invert(1) !important;
+    opacity: 1 !important;
+    border: 1px solid yellow !important; /* Шекара сары түске өзгертілді */
+}
+
+.high-contrast .reset-filters {
+    background-color: #222 !important;
+    color: white !important;
+    border: 1px solid yellow !important; /* Шекара сары түске өзгертілді */
+}
+
+.high-contrast .reset-filters:hover {
+    background-color: #333 !important;
+}
+
+/* Слайдер элементтері шекарасы */
+.high-contrast .slider-dot {
+    background-color: #333 !important;
+    border: 1px solid yellow !important; /* Шекара сары түске өзгертілді */
+}
+
+.high-contrast .slider-dot.active {
+    background-color: yellow !important;
+    border-color: yellow !important;
+}
+
+.high-contrast .slider-arrow {
+    background-color: #333 !important;
+    color: white !important;
+    border: 1px solid yellow !important; /* Шекара сары түске өзгертілді */
+}
+
+.high-contrast .slider-arrow:hover {
+    background-color: yellow !important;
+    color: black !important;
+}
+
+/* Жоба карточкалары шекарасы */
+.high-contrast .project-card {
+    box-shadow: 0 0 0 1px yellow !important; /* Шекара сары түске өзгертілді */
+}
+
+.high-contrast .close-button {
+    background-color: #333 !important;
+    color: white !important;
+    border: 1px solid yellow !important; /* Шекара сары түске өзгертілді */
+}
+
+/* Футер шекарасы */
+.high-contrast footer {
+    border-top: 1px solid yellow !important; /* Шекара сары түске өзгертілді */
+}
+
+.high-contrast .copyright {
+    border-top: 1px solid yellow !important; /* Шекара сары түске өзгертілді */
+    color: white !important;
+}
+
+/* Қолжетімділік панелі батырмалары */
+.high-contrast .accessibility-btn {
+    background-color: #222 !important;
+    color: white !important;
+    border: 1px solid yellow !important; /* Шекара сары түске өзгертілді */
+}
+
+.high-contrast .accessibility-btn:hover {
+    background-color: yellow !important;
+    color: black !important;
+}
+
+/* Прелоадер */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: all 0.5s;
+}
+
+.high-contrast .preloader {
+    background-color: rgba(0, 0, 0, 0.9) !important;
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f5f5f5;
+    border-top: 5px solid #4a86e8;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.high-contrast .loader {
+    border: 5px solid black !important;
+    border-top: 5px solid yellow !important; /* Шекара сары түске өзгертілді */
+}
+
+/* gallery-header p элементінің түсін ақ етіп өзгерту */
+.high-contrast .gallery-header p {
+    color: white !important;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+    </style>
+</head>
+<body>
+    <!-- Прелоадер -->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Қолжетімділік панелі -->
+    <div class="accessibility-panel">
+        <div class="accessibility-toggle">
+            <button class="accessibility-btn" id="fontSize" title="Мәтін үлкейту">
+                Aa+
+            </button>
+            <button class="accessibility-btn" id="contrast" title="Контрастты өзгерту">
+                ◐
+            </button>
+        </div>
+    </div>
+
+    <!-- Хедер -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="logo.png" alt="Логотип">
+                <h1>ЖобаMake</h1>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html">Басты бет</a></li>
+                    <li><a href="learning.html">Оқу материалдары</a></li>
+                    <li><a href="projects.html" class="active">Жобалар</a></li>
+                    <li><a href="teachers.html">Мұғалімдерге</a></li>
+                    <li><a href="ai-learning.html">ЖИ арқылы жоба жасау</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Жобалар галереясы -->
+    <section class="gallery-header">
+        <div class="container">
+            <h2>Жобалар галереясы</h2>
+            <p>Инклюзивті білім беру аясында оқушылардың жасаған жобаларымен танысыңыз. Бұл галерея шабыт алуға және тәжірибе алмасуға арналған.</p>
+        </div>
+    </section>
+
+    <!-- Іздеу және сүзгілеу -->
+    <section class="search-filter-section">
+        <div class="container">
+            <div class="search-container">
+                <input type="text" class="search-input" id="projectSearch" placeholder="Жоба немесе автор аты бойынша іздеу...">
+            </div>
+            <div class="filter-container">
+                <select class="filter-select" id="subjectFilter">
+                    <option value="">Пән бойынша</option>
+                    <option value="math">Математика</option>
+                    <option value="science">Дүниетану</option>
+                    <option value="arts">Өнер</option>
+                    <option value="informatics">Информатика</option>
+                    <option value="technology">Технология</option>
+                </select>
+                
+                <select class="filter-select" id="gradeFilter">
+                    <option value="">Сынып бойынша</option>
+                    <option value="1">1-сынып</option>
+                    <option value="2">2-сынып</option>
+                    <option value="3">3-сынып</option>
+                    <option value="4">4-сынып</option>
+                    <option value="5">5-сынып</option>
+                    <option value="6">6-сынып</option>
+                    <option value="7">7-сынып</option>
+                    <option value="8">8-сынып</option>
+                </select>
+                
+                <select class="filter-select" id="themeFilter">
+                    <option value="">Тақырып бойынша</option>
+                    <option value="nature">Табиғат</option>
+                    <option value="tradition">Ұлттық дәстүр</option>
+                    <option value="tech">Техника</option>
+                    <option value="ecology">Экология</option>
+                    <option value="algorithms">Технология</option>
+                </select>
+                
+                <button class="filter-button" id="applyFilters">Сүзгілеу</button>
+                <button class="reset-filters" id="resetFilters">Тазалау</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Жобалар торы -->
+    <section class="projects-section">
+        <div class="container">
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Жоба 1 -->
+                <div class="project-card" data-id="1" data-subject="math" data-grade="3" data-theme="nature">
+                    <div class="project-image">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR76zwhvWLRv7A_5JnM36zUPyGZ-bSaknCaqg&s" alt="Мен және табиғат">
+                        <div class="project-category">Математика</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Санды қатынастар: Табиғаттағы математика</h3>
+                        <div class="project-meta">
+                            <span><i>👤</i> Айдар Болатов</span>
+                            <span><i>📚</i> 3-сынып</span>
+                        </div>
+                        <p class="project-description">Бұл жобада оқушы табиғаттағы математикалық заңдылықтарды зерттеп, өсімдіктердегі Фибоначчи сандарын анықтады.</p>
+                        <a href="#" class="project-link" data-project="1">Толығырақ оқу</a>
+                    </div>
+                </div>
+                
+                <!-- Жоба 2 -->
+                <div class="project-card" data-id="2" data-subject="arts" data-grade="4" data-theme="tradition">
+                    <div class="project-image">
+                        <img src="https://mcdc.kz/media/k2/items/cache/77a1d541d7e5b1220d6ea4607688bef0_XL.jpg" alt="Ұлттық өрнектер">
+                        <div class="project-category">Өнер</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Қазақ оюлары – ұлттық коды</h3>
+                        <div class="project-meta">
+                            <span><i>👤</i> Әсем Сапарова</span>
+                            <span><i>📚</i> 4-сынып</span>
+                        </div>
+                        <p class="project-description">Қазақтың ұлттық ою-өрнектерін зерттеп, олардың мағынасын талдаған шығармашылық жоба.</p>
+                        <a href="#" class="project-link" data-project="2">Толығырақ оқу</a>
+                    </div>
+                </div>
+                
+                <!-- Жоба 3 -->
+                <div class="project-card" data-id="3" data-subject="science" data-grade="2" data-theme="ecology">
+                    <div class="project-image">
+                        <img src="https://qaragandyhabary.kz/wp-content/uploads/2022/10/star.jpg" alt="Экологияға қамқорлық">
+                        <div class="project-category">Дүниетану</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Мектеп ауласындағы құстар әлемі</h3>
+                        <div class="project-meta">
+                            <span><i>👤</i> Дана Оразова</span>
+                            <span><i>📚</i> 2-сынып</span>
+                        </div>
+                        <p class="project-description">Мектеп ауласында қыстайтын құстар үшін құс үйлері мен тамақтандырғыштар жасау жобасы.</p>
+                        <a href="#" class="project-link" data-project="3">Толығырақ оқу</a>
+                    </div>
+                </div>
+                
+                <!-- Жоба 4 -->
+                <div class="project-card" data-id="4" data-subject="informatics" data-grade="3" data-theme="algorithms">
+                    <div class="project-image">
+                        <img src="https://festivalnauki.ru/upload/iblock/439/yzxjb8l3bwszngjuwzy6kko6wk2g27t9/Algoritm-dlya-detey.png" alt="Алгоритм құрау">
+                        <div class="project-category">Информатика</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Күн тәртібі бойынша алгоритм</h3>
+                        <div class="project-meta">
+                            <span><i>👤</i> Ернар Сейілхан</span>
+                            <span><i>📚</i> 3-сынып</span>
+                        </div>
+                        <p class="project-description">Оқушылар өз күн тәртібіне сәйкес алгоритм құрастырып, оны сызба түрінде көрсетеді. Бұл тапсырма логикалық және реттік ойлауды дамытады.</p>
+                        <a href="#" class="project-link" data-project="4">Толығырақ оқу</a>
+                    </div>
+                </div>
+                
+                
+                <!-- Жоба 5 -->
+                <div class="project-card" data-id="5" data-subject="technology" data-grade="6" data-theme="tech">
+                    <div class="project-image">
+                        <img src="https://egemen.kz/media/2020/05/27/500x339.jpg" alt="Сандық құрал">
+                        <div class="project-category">Технология</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Көру қабілеті төмен оқушыларға арналған мобильді қолданба</h3>
+                        <div class="project-meta">
+                            <span><i>👤</i> Ерлан Сәрсенбаев</span>
+                            <span><i>📚</i> 6-сынып</span>
+                        </div>
+                        <p class="project-description">Оқу материалдарын дауыстап оқитын және түсіндіретін қарапайым қолданба әзірлеу.</p>
+                        <a href="#" class="project-link" data-project="5">Толығырақ оқу</a>
+                    </div>
+                </div>
+                
+                <!-- Жоба 6 -->
+                <div class="project-card" data-id="6" data-subject="science" data-grade="7" data-theme="nature">
+                    <div class="project-image">
+                        <img src="https://static.ernur.kz/article/5baf1a5718d85.jpg" alt="Гүлдер өсіру">
+                        <div class="project-category">Биология</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Сенсорлық бақ жобасы</h3>
+                        <div class="project-meta">
+                            <span><i>👤</i> Алия Жұмабекова</span>
+                            <span><i>📚</i> 7-сынып</span>
+                        </div>
+                        <p class="project-description">Әртүрлі сезім мүшелерін дамытуға арналған сенсорлық бақ құру және оның пайдасын зерттеу.</p>
+                        <a href="#" class="project-link" data-project="6">Толығырақ оқу</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Көбірек жүктеу батырмасы -->
+    <div class="load-more">
+        <button class="load-more-btn" id="loadMoreBtn">Көбірек жүктеу</button>
+    </div>
+
+    <!-- Жоба модальды терезесі -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="project-slider">
+                <img class="project-slide" src="/api/placeholder/800/400" alt="Жоба фотосы">
+                <div class="slider-nav"></div>
+                <div class="slider-arrow prev-slide">&#10094;</div>
+                <div class="slider-arrow next-slide">&#10095;</div>
+            </div>
+            <div class="project-details">
+                <h3>Жоба атауы</h3>
+                <div class="project-info">
+                    <span><i>👤</i> Авторы</span>
+                    <span><i>📚</i> Пәні</span>
+                    <span><i>📆</i> Жасалған күні</span>
+                    <span><i>🏫</i> Мектебі</span>
+                    <span><i>👩‍🏫</i> Жетекшісі</span>
+                </div>
+                <div class="project-desc-section">
+                    <h4>Жоба мақсаты</h4>
+                    <p>Жоба мақсаты сипатталады...</p>
+                </div>
+                <div class="project-desc-section">
+                    <h4>Жоба мазмұны мен кезеңдері</h4>
+                    <p>Жоба кезеңдері сипатталады...</p>
+                </div>
+                <div class="project-steps">
+                    <h4>Жұмыс процесі</h4>
+                    <ul>
+                        <li>Жоспарлау кезеңі</li>
+                        <li>Материалдарды жинау</li>
+                        <li>Зерттеу және бақылау</li>
+                        <li>Қорытынды жасау</li>
+                        <li>Презентация дайындау</li>
+                    </ul>
+                </div>
+                <div class="project-desc-section">
+                    <h4>Жетістіктер мен нәтижелер</h4>
+                    <p>Жоба нәтижелері сипатталады...</p>
+                </div>
+                <a href="#" class="project-download" id="downloadProject">Жобаны жүктеп алу (PDF)</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Байланыс</h3>
+                    <ul>
+                        <li>Мекенжай: Нұр-Сұлтан қ., Қазыбек би көш., 12</li>
+                        <li>Телефон: +7 (7172) 12-34-56</li>
+                        <li>Email: info@inkluzivti-joba.kz</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Пайдалы сілтемелер</h3>
+                    <ul>
+                        <li><a href="#">Нормативтік құжаттар</a></li>
+                        <li><a href="#">Әдістемелік нұсқаулар</a></li>
+                        <li><a href="#">Қызметкерлер</a></li>
+                        <li><a href="#">Жобаларға қосылу</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Әлеуметтік желілер</h3>
+                    <div class="social-links">
+                        <a href="#" title="Facebook">f</a>
+                        <a href="#" title="Instagram">📷</a>
+                        <a href="#" title="YouTube">▶</a>
+                        <a href="#" title="Telegram">✈</a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Жаңалықтарға жазылу</h3>
+                    <form id="newsletter-form">
+                        <input type="email" placeholder="E-mail адресіңіз" required>
+                        <button type="submit">Жазылу</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 "Инклюзивті Жоба" қоғамдық қоры. Барлық құқықтар қорғалған.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Прелоадерді жасыру
+        window.addEventListener('load', function() {
+            document.querySelector('.preloader').style.display = 'none';
+        });
+        
+        // Текстті үлкейту-кішірейту
+        let fontSize = 16;
+        document.getElementById('fontSize').addEventListener('click', function() {
+            fontSize = fontSize === 16 ? 20 : 16;
+            document.body.style.fontSize = fontSize + 'px';
+        });
+        
+        // Контрастты өзгерту
+        document.getElementById('contrast').addEventListener('click', function() {
+            document.body.classList.toggle('high-contrast');
+        });
+        
+        // Жобаларды іздеу және сүзгілеу
+        const projectsGrid = document.getElementById('projectsGrid');
+        const searchInput = document.getElementById('projectSearch');
+        const subjectFilter = document.getElementById('subjectFilter');
+        const gradeFilter = document.getElementById('gradeFilter');
+        const themeFilter = document.getElementById('themeFilter');
+        const applyFiltersBtn = document.getElementById('applyFilters');
+        const resetFiltersBtn = document.getElementById('resetFilters');
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        const projectModal = document.getElementById('projectModal');
+        
+        // Жобаларды сүзгілеу функциясы
+        function filterProjects() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const selectedSubject = subjectFilter.value;
+            const selectedGrade = gradeFilter.value;
+            const selectedTheme = themeFilter.value;
+            
+            const projects = document.querySelectorAll('.project-card');
+            
+            projects.forEach(project => {
+                const title = project.querySelector('.project-title').textContent.toLowerCase();
+                const subject = project.getAttribute('data-subject');
+                const grade = project.getAttribute('data-grade');
+                const theme = project.getAttribute('data-theme');
+                
+                const matchSearch = title.includes(searchTerm);
+                const matchSubject = !selectedSubject || subject === selectedSubject;
+                const matchGrade = !selectedGrade || grade === selectedGrade;
+                const matchTheme = !selectedTheme || theme === selectedTheme;
+                
+                if (matchSearch && matchSubject && matchGrade && matchTheme) {
+                    project.style.display = 'block';
+                } else {
+                    project.style.display = 'none';
+                }
+            });
+        }
+        
+        // Сүзгілеуді қолдану
+        applyFiltersBtn.addEventListener('click', filterProjects);
+        
+        // Сүзгілерді тазалау
+        resetFiltersBtn.addEventListener('click', function() {
+            searchInput.value = '';
+            subjectFilter.value = '';
+            gradeFilter.value = '';
+            themeFilter.value = '';
+            filterProjects();
+        });
+        
+        // Жобаны ашу
+        document.querySelectorAll('.project-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const projectId = this.getAttribute('data-project');
+                openProjectModal(projectId);
+            });
+        });
+        
+        // Модалды терезені ашу
+        function openProjectModal(projectId) {
+            // Демо деректер (нақты жобада API арқылы алынады)
+            const projects = {
+                1: {
+                    title: "Санды қатынастар: Табиғаттағы математика",
+                    author: "Айдар Болатов",
+                    subject: "Математика",
+                    grade: "3-сынып",
+                    date: "2024-03-15",
+                    school: "№25 мектеп-лицей",
+                    mentor: "Жасұлан Естібай",
+                    goal: "Табиғаттағы математикалық заңдылықтарды анықтау арқылы оқушылардың математикаға қызығушылығын арттыру.",
+                    content: "Жоба барысында оқушы гүлдердің жапырақ саны, жеміс-жидектердің тұқым орналасуы, құстардың ұясындағы жұмыртқа санын зерттеді. Фибоначчи қатары мен алтын қатынас түсінігімен танысты.",
+                    steps: ["Зерттеу объектілерін таңдау", "Математикалық өлшеулер жүргізу", "Деректерді жүйелеу және талдау", "Фибоначчи қатарымен салыстыру", "Қорытынды жасау"],
+                    results: "Оқушы табиғаттағы көптеген құбылыстардың математикалық заңдылыққа бағынатынын дәлелдеді. Жоба аудандық ғылыми жобалар конкурсында жүлделі орын алды.",
+                    images: ["/api/placeholder/800/400", "/api/placeholder/800/400", "/api/placeholder/800/400"]
+                },
+                2: {
+                    title: "Қазақ оюлары – ұлттық коды",
+                    author: "Әсем Сапарова",
+                    subject: "Өнер",
+                    grade: "4-сынып",
+                    date: "2024-04-10",
+                    school: "№12 мектеп",
+                    mentor: "Гүлнар Сейітова",
+                    goal: "Қазақ ою-өрнектерінің мағынасын зерттеп, оларды қазіргі өнерде қолдану жолдарын ұсыну.",
+                    content: "Оқушы әр түрлі ою-өрнектердің тарихын, символикалық мағынасын зерттеді. Қолөнер шеберлерімен сұхбаттасып, заманауи дизайнда ою-өрнектерді қолдану әдістерін үйренді.",
+                    steps: ["Ою-өрнектердің түрлерін анықтау", "Олардың тарихын зерттеу", "Символикалық мағынасын талдау", "Заманауи өнерде қолдану мысалдарын табу", "Өз дизайн жобасын жасау"],
+                    results: "Жоба барысында оқушы 20 түрлі ою-өрнектің толық сипаттамасын жасап, олардың 5-еуін заманауи үлгіде қайта жаңғыртты. Жоба республикалық конкурста бағаланды.",
+                    images: ["/api/placeholder/800/400", "/api/placeholder/800/400", "/api/placeholder/800/400"]
+                },
+                3: {
+                    title: "Мектеп ауласындағы құстар әлемі",
+                    author: "Дана Оразова",
+                    subject: "Дүниетану",
+                    grade: "2-сынып",
+                    date: "2024 ж.",
+                    school: "№12 мектеп",
+                    mentor: "Айгүл Жақыпова",
+                    image: "https://qaragandyhabary.kz/wp-content/uploads/2022/10/star.jpg",
+                    goal: "Қыстайтын құстарға қолайлы жағдай жасау арқылы табиғатқа қамқорлықты қалыптастыру.",
+                    content: "Оқушылар құстардың түрлерін зерттеп, мектеп ауласына арнап құс үйлерін жасайды. Жобада бақылау және зерттеу әдістері қолданылады.",
+                    steps: [ "Құстар туралы ақпарат жинау", "Құс үйінің сызбасын жасау", "Құрастыру және орнату", "Бақылау жүргізу", "Нәтижені баяндау"],
+                    result: "Оқушылар құстар туралы білімін тереңдетті, табиғатқа жанашырлық танытты.",
+                    images: ["/api/placeholder/800/400", "/api/placeholder/800/400", "/api/placeholder/800/400"]
+                },
+                4: {
+                    title: "Күн тәртібі бойынша алгоритм",
+                    author: "Ернар Сейілхан",
+                    subject: "Информатика",
+                    grade: "3-сынып",
+                    date: "2024 ж.",
+                    school: "№5 лицей",
+                    mentor: "Назерке Елемес",
+                    image: "https://festivalnauki.ru/upload/iblock/439/yzxjb8l3bwszngjuwzy6kko6wk2g27t9/Algoritm-dlya-detey.png",
+                    goal: "Оқушылардың күн тәртібі бойынша алгоритм құру қабілетін дамыту.",
+                    content: "Балалар өз күн тәртібін қадамдап сипаттап, алгоритм сызбасын жасайды.",
+                    steps: [ "Күн тәртібін талдау", "Қадамдарды жазу", "Блок-схема жасау", "Сыныпта көрсету", "Рефлексия" ],
+                    result: "Оқушылар логикалық ойлау дағдысын дамытты.",
+                    images: ["/api/placeholder/800/400", "/api/placeholder/800/400", "/api/placeholder/800/400"]
+                },
+                5: {
+                    title: "Көру қабілеті төмен оқушыларға арналған мобильді қолданба",
+                    author: "Ерлан Сәрсенбаев",
+                    subject: "Технология",
+                    grade: "6-сынып",
+                    date: "2024 ж.",
+                    school: "№8 гимназия",
+                    mentor: "Самал Қожахмет",
+                    image: "https://egemen.kz/media/2020/05/27/500x339.jpg",
+                    goal: "Көру мүмкіндігі шектеулі балаларға арналған оқу қолдауы құралын жасау.",
+                    content: "Қолданба мәтінді дыбыстап оқиды, түстерді ажыратуға көмектеседі.",
+                    steps: [ "Мәселені анықтау", "Қолданба интерфейсін сызу", "Функцияларын жобалау", "Бета нұсқаны тестілеу", "Қорғау" ],
+                    result: "Инклюзивті технологиялық шешім ұсынылды.",
+                    images: ["/api/placeholder/800/400", "/api/placeholder/800/400", "/api/placeholder/800/400"]
+                },
+                6: {
+                    title: "Сенсорлық бақ жобасы",
+                    author: "Алия Жұмабекова",
+                    subject: "Биология",
+                    grade: "7-сынып",
+                    date: "2024 ж.",
+                    school: "№17 мектеп",
+                    mentor: "Гүлнұр Сапарова",
+                    image: "https://static.ernur.kz/article/5baf1a5718d85.jpg",
+                    goal: "Сезім мүшелерін дамыту үшін сенсорлық орта құру.",
+                    content: "Оқушылар гүлдерді, шөптерді және тастарды қолдана отырып бақша жасайды.",
+                    steps: [ "Жоспар жасау", "Материалдар іріктеу", "Бақ аумағын дайындау", "Өсімдіктерді отырғызу", "Бақылау және таныстыру" ],
+                    result: "Оқушылардың шығармашылық және тактильдік сезімі дамыды.",
+                    images: ["/api/placeholder/800/400", "/api/placeholder/800/400", "/api/placeholder/800/400"]
+                }
+            };
+            
+            const project = projects[projectId];
+            
+            // Мәліметтерді толтыру
+            if (project) {
+                const modal = document.getElementById('projectModal');
+                modal.querySelector('h3').textContent = project.title;
+                
+                // Авторлық ақпарат
+                const projectInfo = modal.querySelector('.project-info');
+                projectInfo.innerHTML = `
+                    <span><i>👤</i> ${project.author}</span>
+                    <span><i>📚</i> ${project.subject}</span>
+                    <span><i>📆</i> ${project.date}</span>
+                    <span><i>🏫</i> ${project.school}</span>
+                    <span><i>👩‍🏫</i> ${project.mentor}</span>
+                `;
+                
+                // Жоба сипаттамасы
+                const sections = modal.querySelectorAll('.project-desc-section');
+                sections[0].querySelector('p').textContent = project.goal;
+                sections[1].querySelector('p').textContent = project.content;
+                
+                // Жұмыс процесі
+                const stepsList = modal.querySelector('.project-steps ul');
+                stepsList.innerHTML = project.steps.map(step => `<li>${step}</li>`).join('');
+                
+                // Нәтижелер
+                sections[sections.length - 1].querySelector('p').textContent = project.results;
+                
+                // Слайдер
+                initSlider(project.images);
+                
+                // Модалды ашу
+                modal.style.display = 'block';
+            }
+        }
+        
+        // Слайдерді басқару
+        function initSlider(images) {
+            const sliderImg = document.querySelector('.project-slide');
+            const sliderNav = document.querySelector('.slider-nav');
+            const prevBtn = document.querySelector('.prev-slide');
+            const nextBtn = document.querySelector('.next-slide');
+            
+            let currentSlide = 0;
+            
+            // Навигация нүктелерін құру
+            sliderNav.innerHTML = images.map((_, index) => 
+                `<span class="slider-dot ${index === 0 ? 'active' : ''}" data-slide="${index}"></span>`
+            ).join('');
+            
+            // Слайдты көрсету
+            function showSlide(index) {
+                sliderImg.src = images[index];
+                document.querySelectorAll('.slider-dot').forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+                currentSlide = index;
+            }
+            
+            // Келесі слайд
+            nextBtn.addEventListener('click', () => {
+                const next = (currentSlide + 1) % images.length;
+                showSlide(next);
+            });
+            
+            // Алдыңғы слайд
+            prevBtn.addEventListener('click', () => {
+                const prev = (currentSlide - 1 + images.length) % images.length;
+                showSlide(prev);
+            });
+            
+            // Навигация нүктелері
+            sliderNav.addEventListener('click', (e) => {
+                if (e.target.classList.contains('slider-dot')) {
+                    const index = parseInt(e.target.getAttribute('data-slide'));
+                    showSlide(index);
+                }
+            });
+            
+            // Бірінші слайдты көрсету
+            showSlide(0);
+        }
+        
+        // Модалды жабу
+        document.querySelector('.close-button').addEventListener('click', function() {
+            projectModal.style.display = 'none';
+        });
+        
+        window.addEventListener('click', function(event) {
+            if (event.target === projectModal) {
+                projectModal.style.display = 'none';
+            }
+        });
+        
+        // Көбірек жүктеу функциясы
+        loadMoreBtn.addEventListener('click', function() {
+            // Демонстрация үшін анимация
+            this.textContent = 'Жүктелуде...';
+            setTimeout(() => {
+                this.textContent = 'Көбірек жүктеу';
+                // Бұл жерде AJAX сұрау жасалып, жаңа жобалар қосылады
+                alert('Қосымша жобалар жүктеледі (демо)');
+            }, 1000);
+        });
+        
+        // Жобаны жүктеп алу
+        document.getElementById('downloadProject').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Жоба файлы жүктеледі (PDF форматында)');
+            // Нақты файлды жүктеу логикасы
+        });
+        
+        // Responsive мәзір
+        function handleResponsiveMenu() {
+            const width = window.innerWidth;
+            const nav = document.querySelector('nav');
+            
+            if (width <= 768) {
+                // Мобильді мәзір логикасы
+                if (!document.querySelector('.mobile-menu-btn')) {
+                    const menuBtn = document.createElement('button');
+                    menuBtn.className = 'mobile-menu-btn';
+                    menuBtn.innerHTML = '☰';
+                    document.querySelector('.header-container').insertBefore(menuBtn, nav);
+                    
+                    menuBtn.addEventListener('click', () => {
+                        nav.classList.toggle('active');
+                    });
+                }
+            } else {
+                // Десктоп мәзірге қайта өту
+                const menuBtn = document.querySelector('.mobile-menu-btn');
+                if (menuBtn) {
+                    menuBtn.remove();
+                    nav.classList.remove('active');
+                }
+            }
+        }
+        
+        window.addEventListener('resize', handleResponsiveMenu);
+        handleResponsiveMenu();
+    </script>
+</body>
+</html>
