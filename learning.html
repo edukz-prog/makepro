@@ -531,26 +531,25 @@ footer {
     padding: 10px 0 20px;
 }
 .youtube-link {
-            padding: 12px 24px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.95rem;
-        }
-        .youtube-link {
-            background: linear-gradient(45deg, #dc2626, #ef4444);
-            color: white;
-        }
+    background-color: #FF4E4E; /* YouTube стиліндегі қызыл түс */
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    margin-top: 10px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-        .youtube-link:hover {
-            background: linear-gradient(45deg, #b91c1c, #dc2626);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.3);
-        }
+.youtube-link:hover {
+    background-color: #e04343;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
 
         /* Қалқымалы терезе стильдері */
         .modal-overlay {
@@ -711,6 +710,45 @@ footer {
         min-width: 100%;
     }
 }
+
+.game-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .game-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+        }
+
+        .game-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .category-section {
+                padding: 20px;
+            }
+            
+            .category-title {
+                font-size: 2rem;
+            }
+            
+            .materials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .material-actions {
+                flex-direction: column;
+            }
+        }
 
 /* Үлкейтілген мәтін үшін класстар */
 .text-large {
@@ -975,78 +1013,138 @@ footer {
         </div>
         
         <!-- Жобалық тапсырмалар -->
+        <section class="category-section">
+        <h2 class="category-title">Тақырыптық ойындар</h2>
+        <div class="materials-grid">
+            <div class="material-card">
+                <div class="material-image">🌐</div>
+                <div class="material-content">
+                    <h3 class="material-title">Интернет қауіпсіздігі</h3>
+                    <div class="material-description">
+                        Балаларға арналған онлайн қауіпсіздік ережелерімен танысу және постер жасау
+                    </div>
+                    <div class="material-tags">
+                        <span class="tag">Информатика</span>
+                        <span class="tag">9-11 жас</span>
+                    </div>
+                    <div class="accessibility-icons">
+                        <span class="accessibility-icon">👁 Визуалды</span>
+                        <span class="accessibility-icon">🤲 Қолмен жұмыс</span>
+                        <span class="accessibility-icon">👂 Аудио</span>
+                    </div>
+                    <div class="material-actions">
+                        <button class="game-btn" onclick="openGameModal('Интернет қауіпсіздігі', 'https://wordwall.net/resource/87296644')">🎮 Ойын</button>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="material-card">
+                <div class="material-image">🧩</div>
+                <div class="material-content">
+                    <h3 class="material-title">Логикалық тапсырмалар әлемі</h3>
+                    <div class="material-description">
+                        Scratch немесе басқа визуалды бағдарламалау ортасында қарапайым логикалық ойын құрастыру
+                    </div>
+                    <div class="material-tags">
+                        <span class="tag">Информатика</span>
+                        <span class="tag">10-12 жас</span>
+                    </div>
+                    <div class="accessibility-icons">
+                        <span class="accessibility-icon">👁 Визуалды</span>
+                        <span class="accessibility-icon">🤲 Қолмен жұмыс</span>
+                    </div>
+                    <div class="material-actions">
+                        <button class="game-btn" onclick="openGameModal('Логикалық тапсырмалар әлемі', 'https://wordwall.net/resource/82517957')">🎮 Ойын</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="material-card">
+                <div class="material-image">🧠</div>
+                <div class="material-content">
+                    <h3 class="material-title">Ақпарат түрлері</h3>
+                    <div class="material-description">
+                        Ақпараттың мәтіндік, графикалық, дыбыстық түрлерін ажыратуға және оларды өңдеуге арналған жоба
+                    </div>
+                    <div class="material-tags">
+                        <span class="tag">Информатика</span>
+                        <span class="tag">8-9 жас</span>
+                    </div>
+                    <div class="accessibility-icons">
+                        <span class="accessibility-icon">👁 Визуалды</span>
+                        <span class="accessibility-icon">👂 Аудио</span>
+                    </div>
+                    <div class="material-actions">
+                        <button class="game-btn" onclick="openGameModal('Ақпарат түрлері', 'https://wordwall.net/resource/38013744')">🎮 Ойын</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function openGameModal(title, gameUrl) {
+            // Open game in new tab
+            window.open(gameUrl, '_blank');
+        }
+
+        function closeGameModal() {
+            // No longer needed
+        }
+
+        // No longer needed - games open in new tab
+        // window.onclick and keydown events removed
+    </script>
+
 <section class="category-section">
-    <h2 class="category-title">Жобалық тапсырмалар (Информатика және АКТ)</h2>
+    <h2 class="category-title">Жобалық тапсырмалар</h2>
     <div class="materials-grid">
 
         <div class="material-card">
-            <div class="material-image">💻</div>
-            <div class="material-content">
-                <h3 class="material-title">Менің алғашқы презентациям</h3>
-                <div class="material-description">
-                    PowerPoint бағдарламасында 3 слайдтан тұратын жеке таныстырылым жасау
-                </div>
-                <div class="material-tags">
-                    <span class="tag">Информатика</span>
-                    <span class="tag">8-10 жас</span>
-                </div>
-                <div class="accessibility-icons">
-                    <span class="accessibility-icon">👁 Визуалды</span>
-                    <span class="accessibility-icon">🤲 Қолмен жұмыс</span>
-                </div>
-                <div class="material-actions">
-                    <a href="https://drive.google.com/file/d/1AxxDemoLink/view?usp=sharing" class="download-btn" download>PDF жүктеу</a>
-                    <a href="https://drive.google.com/file/d/1AxxDemoLink/view?usp=sharing" class="preview-link">Қарау →</a>
-                </div>
-            </div>
+    <div class="material-image">💻</div>
+    <div class="material-content">
+        <h3 class="material-title">Менің алғашқы презентациям</h3>
+        <div class="material-description">
+            PowerPoint бағдарламасында 3 слайдтан тұратын жеке таныстырылым жасау
         </div>
+        <div class="material-tags">
+            <span class="tag">Информатика</span>
+            <span class="tag">8-10 жас</span>
+        </div>
+        <div class="accessibility-icons">
+            <span class="accessibility-icon">👁 Визуалды</span>
+            <span class="accessibility-icon">🤲 Қолмен жұмыс</span>
+        </div>
+        <div class="material-actions">
+            <a href="https://docs.google.com/presentation/d/1DZebgwQZ8VEkc3lhrMXHXsCtLgeQd8Fp/export?format=pptx" class="download-btn" download>Материалды жүктеу</a>
+        </div>
+    </div>
+</div>
+
 
         <div class="material-card">
-            <div class="material-image">🖱️</div>
-            <div class="material-content">
-                <h3 class="material-title">Тышқан жаттығулары</h3>
-                <div class="material-description">
-                    Тышқанның сол және оң батырмасын қолдануға арналған қызықты тапсырмалар жиынтығы
-                </div>
-                <div class="material-tags">
-                    <span class="tag">АКТ</span>
-                    <span class="tag">6-7 жас</span>
-                </div>
-                <div class="accessibility-icons">
-                    <span class="accessibility-icon">👁 Визуалды</span>
-                    <span class="accessibility-icon">🤲 Қолмен жұмыс</span>
-                </div>
-                <div class="material-actions">
-                    <a href="https://drive.google.com/file/d/1BxxDemoLink/view?usp=sharing" class="download-btn" download>PDF жүктеу</a>
-                    <a href="https://drive.google.com/file/d/1BxxDemoLink/view?usp=sharing" class="preview-link">Қарау →</a>
-                </div>
-            </div>
+    <div class="material-image">🖱️</div>
+    <div class="material-content">
+        <h3 class="material-title">Тышқан жаттығулары</h3>
+        <div class="material-description">
+            Тышқанның сол және оң батырмасын қолдануға арналған қызықты тапсырмалар жиынтығы
         </div>
-
-        <div class="material-card">
-            <div class="material-image">🌐</div>
-            <div class="material-content">
-                <h3 class="material-title">Интернет қауіпсіздігі</h3>
-                <div class="material-description">
-                    Балаларға арналған онлайн қауіпсіздік ережелерімен танысу және постер жасау
-                </div>
-                <div class="material-tags">
-                    <span class="tag">Информатика</span>
-                    <span class="tag">9-11 жас</span>
-                </div>
-                <div class="accessibility-icons">
-                    <span class="accessibility-icon">👁 Визуалды</span>
-                    <span class="accessibility-icon">🤲 Қолмен жұмыс</span>
-                    <span class="accessibility-icon">👂 Аудио</span>
-                </div>
-                <div class="material-actions">
-                    <a href="https://drive.google.com/file/d/1CxxDemoLink/view?usp=sharing" class="download-btn" download>PDF жүктеу</a>
-                    <a href="https://drive.google.com/file/d/1CxxDemoLink/view?usp=sharing" class="preview-link">Қарау →</a>
-                </div>
-            </div>
+        <div class="material-tags">
+            <span class="tag">АКТ</span>
+            <span class="tag">6-7 жас</span>
         </div>
+        <div class="accessibility-icons">
+            <span class="accessibility-icon">👁 Визуалды</span>
+            <span class="accessibility-icon">🤲 Қолмен жұмыс</span>
+        </div>
+        <div class="material-actions">
+            <a href="https://drive.google.com/file/d/11E4EZedpQ-PIPZMSW_SrtDBFdHxvb0p7/view?usp=sharing" class="download-btn" download>PDF жүктеу</a>
+            <a href="https://drive.google.com/file/d/11E4EZedpQ-PIPZMSW_SrtDBFdHxvb0p7/view?usp=sharing" class="preview-link">Қарау →</a>
+        </div>
+    </div>
+</div>
 
-        <div class="material-card">
+<div class="material-card">
     <div class="material-image">📸</div>
     <div class="material-content">
         <h3 class="material-title">Цифрлық әңгіме</h3>
@@ -1063,58 +1161,13 @@ footer {
             <span class="accessibility-icon">👂 Аудио</span>
         </div>
         <div class="material-actions">
-            <a href="https://drive.google.com/file/d/1DxxDemoLink/view?usp=sharing" class="download-btn" download>PDF жүктеу</a>
-            <a href="https://drive.google.com/file/d/1DxxDemoLink/view?usp=sharing" class="preview-link">Қарау →</a>
+            <a href="https://drive.google.com/file/d/1eoByQ9Gz4Q_DGAItSmnVs2OgFp0YVFH5/view?usp=sharing" class="download-btn" download>PDF жүктеу</a>
+            <a href="https://drive.google.com/file/d/1eoByQ9Gz4Q_DGAItSmnVs2OgFp0YVFH5/view?usp=sharing" class="preview-link">Қарау →</a>
         </div>
     </div>
 </div>
 
-<div class="material-card">
-    <div class="material-image">🧩</div>
-    <div class="material-content">
-        <h3 class="material-title">Логикалық тапсырмалар әлемі</h3>
-        <div class="material-description">
-            Scratch немесе басқа визуалды бағдарламалау ортасында қарапайым логикалық ойын құрастыру
-        </div>
-        <div class="material-tags">
-            <span class="tag">Информатика</span>
-            <span class="tag">10-12 жас</span>
-        </div>
-        <div class="accessibility-icons">
-            <span class="accessibility-icon">👁 Визуалды</span>
-            <span class="accessibility-icon">🤲 Қолмен жұмыс</span>
-        </div>
-        <div class="material-actions">
-            <a href="https://drive.google.com/file/d/1ExxDemoLink/view?usp=sharing" class="download-btn" download>PDF жүктеу</a>
-            <a href="https://drive.google.com/file/d/1ExxDemoLink/view?usp=sharing" class="preview-link">Қарау →</a>
-        </div>
-    </div>
 </div>
-
-<div class="material-card">
-    <div class="material-image">🧠</div>
-    <div class="material-content">
-        <h3 class="material-title">Ақпарат түрлері</h3>
-        <div class="material-description">
-            Ақпараттың мәтіндік, графикалық, дыбыстық түрлерін ажыратуға және оларды өңдеуге арналған жоба
-        </div>
-        <div class="material-tags">
-            <span class="tag">Информатика</span>
-            <span class="tag">8-9 жас</span>
-        </div>
-        <div class="accessibility-icons">
-            <span class="accessibility-icon">👁 Визуалды</span>
-            <span class="accessibility-icon">👂 Аудио</span>
-        </div>
-        <div class="material-actions">
-            <a href="https://drive.google.com/file/d/1FxxDemoLink/view?usp=sharing" class="download-btn" download>PDF жүктеу</a>
-            <a href="https://drive.google.com/file/d/1FxxDemoLink/view?usp=sharing" class="preview-link">Қарау →</a>
-        </div>
-    </div>
-</div>
-
-
-    </div>
 </section>
 
         
@@ -1125,18 +1178,16 @@ footer {
         <h2 class="category-title">Методологиялық кеңестер</h2>
         <div class="methodology-cards">
             <div class="methodology-card">
-               <div class="methodology-card-icon">📝</div>
-                <h3>Жобалық оқытуды қалай бастау керек</h3>
-                <p>Инклюзивті сыныптарда жобалық оқытуды бастаудың қадамдық нұсқаулары мен кеңестері. Әр баланың мүмкіндіктерін ескеру жолдары.</p>
-                <div class="button-group">
-                    <a href="https://drive.google.com/file/d/1NkaK2he6LpjHCPQ78_8zGHj-GN5QAR9a/view?usp=sharing" class="download-btn" target="_blank">
-                        📄 Толық нұсқаулықты жүктеу
-                    </a>
-                    <button class="youtube-link" onclick="openVideoModal()">
-                        ▶ Бейнені қалқымалы терезеде көру
-                    </button>
-                </div>
-            </div>
+    <div class="methodology-card-icon">📝</div>
+    <h3>Жобалық оқытуды қалай бастау керек</h3>
+    <p>Инклюзивті сыныптарда жобалық оқытуды бастаудың қадамдық нұсқаулары мен кеңестері. Әр баланың мүмкіндіктерін ескеру жолдары.</p>
+    <div class="button-group">
+        <button class="youtube-link" onclick="openVideoModal()">
+            ▶ Бейнені қалқымалы терезеде көру
+        </button>
+    </div>
+</div>
+
 
             <div class="methodology-card">
                 <div class="methodology-card-icon">👥</div>
